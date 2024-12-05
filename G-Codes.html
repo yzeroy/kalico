@@ -2700,6 +2700,57 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#tools_calibrate" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚠️ [tools_calibrate]
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚠️ [tools_calibrate]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tool_calibrate_query_probe" class="md-nav__link">
+    <span class="md-ellipsis">
+      TOOL_CALIBRATE_QUERY_PROBE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tool_locate_sensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      TOOL_LOCATE_SENSOR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tool_calibrate_tool_offset" class="md-nav__link">
+    <span class="md-ellipsis">
+      TOOL_CALIBRATE_TOOL_OFFSET
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tool_calibrate_save_tool_offset" class="md-nav__link">
+    <span class="md-ellipsis">
+      TOOL_CALIBRATE_SAVE_TOOL_OFFSET
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#trad_rack" class="md-nav__link">
     <span class="md-ellipsis">
       [trad_rack]
@@ -6396,6 +6447,57 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#tools_calibrate" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚠️ [tools_calibrate]
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚠️ [tools_calibrate]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tool_calibrate_query_probe" class="md-nav__link">
+    <span class="md-ellipsis">
+      TOOL_CALIBRATE_QUERY_PROBE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tool_locate_sensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      TOOL_LOCATE_SENSOR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tool_calibrate_tool_offset" class="md-nav__link">
+    <span class="md-ellipsis">
+      TOOL_CALIBRATE_TOOL_OFFSET
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tool_calibrate_save_tool_offset" class="md-nav__link">
+    <span class="md-ellipsis">
+      TOOL_CALIBRATE_SAVE_TOOL_OFFSET
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#trad_rack" class="md-nav__link">
     <span class="md-ellipsis">
       [trad_rack]
@@ -8085,6 +8187,25 @@ or
 The velocity argument is not available on CoreXY. With no arguments, this
 command responds with the movement direction with the most acceleration or
 velocity.</p>
+<h3 id="tools_calibrate">⚠️ [tools_calibrate]<a class="headerlink" href="#tools_calibrate" title="Permanent link">&para;</a></h3>
+<p>The following commands are available when the
+<a href="Config_Reference.html#tools_calibrate">tools_calibrate config section</a> is enabled.</p>
+<h4 id="tool_calibrate_query_probe">TOOL_CALIBRATE_QUERY_PROBE<a class="headerlink" href="#tool_calibrate_query_probe" title="Permanent link">&para;</a></h4>
+<p><code>TOOL_CALIBRATE_QUERY_PROBE</code>: Query the current calibration probe state.</p>
+<h4 id="tool_locate_sensor">TOOL_LOCATE_SENSOR<a class="headerlink" href="#tool_locate_sensor" title="Permanent link">&para;</a></h4>
+<p><code>TOOL_LOCATE_SENSOR</code>: Locate the sensor relative to the initial tool. The initial
+tool is the 0 offset, which other tools are calibrated against.</p>
+<p>Before running <code>TOOL_LOCATE_SENSOR</code>, position your primary toolhead centered over
+the calibration probe.</p>
+<h4 id="tool_calibrate_tool_offset">TOOL_CALIBRATE_TOOL_OFFSET<a class="headerlink" href="#tool_calibrate_tool_offset" title="Permanent link">&para;</a></h4>
+<p><code>TOOL_CALIBRATE_TOOL_OFFSET</code>: After locating the sensor with your initial tool,
+position each additional tool over the sensor and run <code>TOOL_CALIBRATE_TOOL_OFFSET</code>
+to find their offsets.</p>
+<h4 id="tool_calibrate_save_tool_offset">TOOL_CALIBRATE_SAVE_TOOL_OFFSET<a class="headerlink" href="#tool_calibrate_save_tool_offset" title="Permanent link">&para;</a></h4>
+<p><code>TOOL_CALIBRATE_SAVE_TOOL_OFFSET MACRO=&lt;macro_name&gt; VARIABLE=&lt;variable_name&gt; [VALUE="({x:0.6f}, {y:0.6f}, {z:0.6f})"]</code>:
+Save the last calibration result to a macro variable.</p>
+<p><code>TOOL_CALIBRATE_SAVE_TOOL_OFFSET SECTION= ATTRIBUTE= [VALUE="{x:0.6f}, {y:0.6f}, {z:0.6f}"]</code>:
+Save the last calibration result to a field in your configuration. Calibration data saved this way will not take effect until after a <code>RESTART</code> of your printer.</p>
 <h3 id="trad_rack">[trad_rack]<a class="headerlink" href="#trad_rack" title="Permanent link">&para;</a></h3>
 <p>The following commands are available when the
 <a href="Config_Reference.html#trad_rack">trad_rack config section</a> is enabled.</p>

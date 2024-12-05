@@ -2091,6 +2091,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#tools_calibrate" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚠️ [tools_calibrate]
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#trad_rack" class="md-nav__link">
     <span class="md-ellipsis">
       [trad_rack]
@@ -5241,6 +5250,15 @@
   <a href="#angle" class="md-nav__link">
     <span class="md-ellipsis">
       [angle]
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tools_calibrate" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚠️ [tools_calibrate]
     </span>
   </a>
   
@@ -10471,6 +10489,49 @@ cs_pin:
 #spi_software_miso_pin:
 #   See the &quot;common SPI settings&quot; section for a description of the
 #   above parameters.
+</code></pre></div>
+
+<h3 id="tools_calibrate">⚠️ [tools_calibrate]<a class="headerlink" href="#tools_calibrate" title="Permanent link">&para;</a></h3>
+<p>Multi-toolhead nozzle offset calibration, using a 3-axis nozzle contact probe such as
+<a href="https://github.com/zruncho3d/nudge">Zruncho3D's Nudge Probe</a>.</p>
+<div class="highlight"><pre><span></span><code>[tools_calibrate]
+pin:
+travel_speed: 20
+#   X and Y travel speed in mm/sec
+spread: 5
+#spread_x:
+#spread_y:
+#   X and Y travel distance around the probe
+#initial_spread:
+#initial_spread_x:
+#initial_spread_y:
+#   X and Y travel distance for the initial probe locating moves
+lower_z: 1.0
+#   Distance to lower in Z for contact with the sides of the probe
+speed: 2
+#   The speed (in mm/sec) to retract between probes
+lift_speed: 4
+#   Z Lift speed after probing
+final_lift_z: 6
+#   Z lift distance after calibration, must be greater than any
+#   height variance between tools
+trigger_to_bottom_z: 0.25
+#   Offset from probe trigger to vertical motion bottoms out.
+#   decrease if the nozzle is too high, increase if too low.
+#samples: 1
+#   The number of times to probe each point. The probed z-values will
+#   be averaged. The default is to probe 1 time.
+#sample_retract_dist: 2.0
+#   The distance (in mm) to lift the toolhead between each sample (if
+#   sampling more than once). The default is 2mm.
+#samples_result: average
+#   The calculation method when sampling more than once - either
+#   &quot;median&quot; or &quot;average&quot;. The default is average.
+#samples_tolerance: 0.100
+#   The maximum Z distance (in mm) that a sample may differ from other
+#   samples. If this tolerance is exceeded then either an error is
+#   reported or the attempt is restarted (see
+#   samples_tolerance_retries). The default is 0.100mm.
 </code></pre></div>
 
 <h3 id="trad_rack">[trad_rack]<a class="headerlink" href="#trad_rack" title="Permanent link">&para;</a></h3>
