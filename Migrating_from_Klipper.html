@@ -751,6 +751,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Migrating from Klipper
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="Migrating_from_Klipper.html" class="md-nav__link md-nav__link--active">
         
   
@@ -760,6 +771,52 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#option-1-manually-clone-the-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Option 1. Manually clone the repository
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#option-2-using-kiauh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Option 2. Using KIAUH
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#option-3-adding-a-git-remote-to-the-existing-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Option 3. Adding a git-remote to the existing installation
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1927,6 +1984,41 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#option-1-manually-clone-the-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Option 1. Manually clone the repository
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#option-2-using-kiauh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Option 2. Using KIAUH
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#option-3-adding-a-git-remote-to-the-existing-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Option 3. Adding a git-remote to the existing installation
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1949,6 +2041,44 @@
 
 
 <h1 id="migrating-from-klipper">Migrating from Klipper<a class="headerlink" href="#migrating-from-klipper" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>[!NOTE]
+Any add-on modules you are using will need to be reinstalled after switching to Kalico. This includes things like Beacon support, led-effect, etc.</p>
+<p>Any data in ~/printer_data such as printer configs and macros will be unaffected, THOUGH do back up just in case.</p>
+</blockquote>
+<h3 id="option-1-manually-clone-the-repository">Option 1. Manually clone the repository<a class="headerlink" href="#option-1-manually-clone-the-repository" title="Permanent link">&para;</a></h3>
+<p>If desired, make a backup copy of your existing Klipper installation by running:</p>
+<div class="highlight"><pre><span></span><code>mv<span class="w"> </span>~/klipper<span class="w"> </span>~/klipper_old
+</code></pre></div>
+
+<p>Then clone the Kalico repo and restart the klipper service:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/KalicoCrew/kalico.git<span class="w"> </span>~/klipper
+sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>klipper
+</code></pre></div>
+
+<h3 id="option-2-using-kiauh">Option 2. Using KIAUH<a class="headerlink" href="#option-2-using-kiauh" title="Permanent link">&para;</a></h3>
+<p>For users that are not comfortable using Git directly, <a href="https://github.com/dw-0/kiauh">KIAUH v6</a> is able to use custom repositories.</p>
+<p>To do this, add the Kalico repo to KIAUH's custom repository settings with the following steps:</p>
+<p>From the KIAUH menu select:</p>
+<ul>
+<li>[S] Settings</li>
+<li>1) Set custom Klipper repository</li>
+<li>Use <code>https://github.com/KalicoCrew/kalico</code> as the new repository URL</li>
+<li>Use <code>main</code> or <code>bleeding-edge-v2</code> as the new branch name</li>
+<li>Select 'Y' to apply the changes</li>
+<li>Enter 'B' for back twice</li>
+<li>'Q' to quit</li>
+</ul>
+<h3 id="option-3-adding-a-git-remote-to-the-existing-installation">Option 3. Adding a git-remote to the existing installation<a class="headerlink" href="#option-3-adding-a-git-remote-to-the-existing-installation" title="Permanent link">&para;</a></h3>
+<p>Can switch back to mainline klipper at any time via a <code>git checkout upstream_main</code></p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/klipper
+git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>kalico<span class="w"> </span>https://github.com/KalicoCrew/kalico.git
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>upstream-main<span class="w"> </span>origin/master
+git<span class="w"> </span>branch<span class="w"> </span>-D<span class="w"> </span>master
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>main<span class="w"> </span>kalico/main
+sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>klipper
+sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>moonraker
+</code></pre></div>
 
 
 
