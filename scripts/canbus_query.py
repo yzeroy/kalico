@@ -7,6 +7,7 @@
 import optparse
 import sys
 import time
+
 import can
 
 CANBUS_ID_ADMIN = 0x3F0

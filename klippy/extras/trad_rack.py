@@ -4,12 +4,19 @@
 # based on code by Kevin O'Connor <kevin@koconnor.net>
 #
 # This file may be distributed under the terms of the GNU GPLv3 license.
-import logging, math, os, time
+import logging
+import math
+import os
+import time
 from collections import deque
-from extras.homing import Homing, HomingMove
+
+import chelper
+import kinematics.extruder
+import toolhead
 from gcode import CommandError
 from stepper import LookupMultiRail
-import chelper, toolhead, kinematics.extruder
+
+from extras.homing import Homing, HomingMove
 
 SERVO_NAME = "servo tr_servo"
 SELECTOR_STEPPER_NAME = "stepper_tr_selector"

@@ -5,7 +5,8 @@
 #
 # This file may be distributed under the terms of the GNU GPLv3 license.
 import logging
-from . import bus, adxl345, bulk_sensor
+
+from . import adxl345, bulk_sensor, bus
 
 # LIS2DW registers
 REG_LIS2DW_WHO_AM_I_ADDR = 0x0F

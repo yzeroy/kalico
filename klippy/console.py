@@ -4,8 +4,17 @@
 # Copyright (C) 2016-2021  Kevin O'Connor <kevin@koconnor.net>
 #
 # This file may be distributed under the terms of the GNU GPLv3 license.
-import sys, optparse, os, re, logging
-import util, reactor, serialhdl, msgproto, clocksync
+import logging
+import optparse
+import os
+import re
+import sys
+
+import clocksync
+import msgproto
+import reactor
+import serialhdl
+import util
 
 help_txt = """
   This is a debugging console for the Klipper micro-controller.

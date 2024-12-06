@@ -3,8 +3,11 @@
 # Copyright (C) 2016-2022  Kevin O'Connor <kevin@koconnor.net>
 #
 # This file may be distributed under the terms of the GNU GPLv3 license.
-import math, logging
-import stepper, chelper
+import logging
+import math
+
+import chelper
+import stepper
 
 
 class ExtruderStepper:

@@ -3,7 +3,10 @@
 # Copyright (C) 2016-2024  Kevin O'Connor <kevin@koconnor.net>
 #
 # This file may be distributed under the terms of the GNU GPLv3 license.
-import math, logging, importlib
+import importlib
+import logging
+import math
+
 import chelper
 import kinematics.extruder
 from extras.danger_options import get_danger_options

@@ -3,10 +3,18 @@
 # Copyright (C) 2020 Eric Callahan <arksine.code@gmail.com>
 #
 # This file may be distributed under the terms of the GNU GPLv3 license
-import logging, socket, os, sys, errno, json, collections
+import collections
+import errno
+import json
+import logging
+import os
+import socket
+import sys
+
 import gcode
-from klippy import APP_NAME
 from extras.danger_options import get_danger_options
+
+from klippy import APP_NAME
 
 REQUEST_LOG_SIZE = 20
 

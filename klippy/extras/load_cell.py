@@ -3,8 +3,7 @@
 # Copyright (C) 2024 Gareth Farrington <gareth@waves.ky>
 #
 # This file may be distributed under the terms of the GNU GPLv3 license.
-from . import hx71x
-from . import ads1220
+from . import ads1220, hx71x
 
 
 # Printer class that controls a load cell

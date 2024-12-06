@@ -4,8 +4,17 @@
 # Copyright (C) 2016-2024  Kevin O'Connor <kevin@koconnor.net>
 #
 # This file may be distributed under the terms of the GNU GPLv3 license.
-import sys, os, subprocess, optparse, logging, shlex, socket, time, traceback
-import json, zlib
+import json
+import logging
+import optparse
+import os
+import shlex
+import socket
+import subprocess
+import sys
+import time
+import traceback
+import zlib
 
 sys.path.append("./klippy")
 import msgproto  # noqa: E402

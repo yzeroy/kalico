@@ -4,9 +4,10 @@
 #
 # This file may be distributed under the terms of the GNU GPLv3 license.
 import logging
-from . import bus
 
 from extras.danger_options import get_danger_options
+
+from . import bus
 
 LM75_CHIP_ADDR = 0x48
 LM75_I2C_SPEED = 100000

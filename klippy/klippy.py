@@ -4,9 +4,26 @@
 # Copyright (C) 2016-2020  Kevin O'Connor <kevin@koconnor.net>
 #
 # This file may be distributed under the terms of the GNU GPLv3 license.
-import sys, os, gc, optparse, logging, time, collections, importlib, importlib.util
-import util, reactor, queuelogger, msgproto
-import gcode, configfile, pins, mcu, toolhead, webhooks
+import collections
+import gc
+import importlib
+import importlib.util
+import logging
+import optparse
+import os
+import sys
+import time
+
+import configfile
+import gcode
+import mcu
+import msgproto
+import pins
+import queuelogger
+import reactor
+import toolhead
+import util
+import webhooks
 from extras.danger_options import get_danger_options
 
 APP_NAME = "Kalico"
@@ -422,8 +439,9 @@ class Printer:
 
 def import_test():
     # Import all optional modules (used as a build test)
-    from extras import danger_options
     from unittest import mock
+
+    from extras import danger_options
 
     danger_options.DANGER_OPTIONS = mock.Mock()
     dname = os.path.dirname(__file__)

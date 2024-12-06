@@ -4,7 +4,9 @@
 # Copyright (C) 2023  Kevin O'Connor <kevin@koconnor.net>
 #
 # This file may be distributed under the terms of the GNU GPLv3 license.
-import sys, os, optparse
+import optparse
+import os
+import sys
 
 
 def import_msgproto():

@@ -6,11 +6,12 @@
 # This file may be distributed under the terms of the GNU GPLv3 license.
 
 from __future__ import print_function
-import util
 
 import argparse
 import os
 import sys
+
+import util
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "../klippy"))
 

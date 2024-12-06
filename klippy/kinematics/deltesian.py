@@ -3,7 +3,9 @@
 # Copyright (C) 2022  Fabrice Gallet <tircown@gmail.com>
 #
 # This file may be distributed under the terms of the GNU GPLv3 license.
-import math, logging
+import logging
+import math
+
 import stepper
 
 # Slow moves once the ratio of tower to XY movement exceeds SLOW_RATIO

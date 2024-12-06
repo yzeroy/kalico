@@ -5,9 +5,14 @@
 # Copyright (C) 2020  Dmitry Butyugin <dmbutyugin@google.com>
 #
 # This file may be distributed under the terms of the GNU GPLv3 license.
-import importlib, optparse, os, sys
+import importlib
+import optparse
+import os
+import sys
 from textwrap import wrap
-import numpy as np, matplotlib
+
+import matplotlib
+import numpy as np
 
 sys.path.append(
     os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "klippy")
@@ -258,7 +263,9 @@ def setup_matplotlib(output):
     if output:
         matplotlib.rcParams.update({"figure.autolayout": True})
         matplotlib.use("Agg")
-    import matplotlib.pyplot, matplotlib.dates, matplotlib.font_manager
+    import matplotlib.dates
+    import matplotlib.font_manager
+    import matplotlib.pyplot
     import matplotlib.ticker
 
 

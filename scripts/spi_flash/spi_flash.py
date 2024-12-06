@@ -5,22 +5,23 @@
 # Copyright (C) 2022 H. Gregor Molter <gregor.molter@secretlab.de>
 #
 # This file may be distributed under the terms of the GNU GPLv3 license.
-import sys
 import argparse
-import os
-import zlib
-import hashlib
-import logging
 import collections
+import hashlib
+import json
+import logging
+import os
+import sys
 import time
 import traceback
-import json
+import zlib
+
 import board_defs
+import clocksync
 import fatfs_lib
+import mcu
 import reactor
 import serialhdl
-import clocksync
-import mcu
 
 ###########################################################
 #

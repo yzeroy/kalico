@@ -3,8 +3,12 @@
 # Copyright (C) 2019-2021  Kevin O'Connor <kevin@koconnor.net>
 #
 # This file may be distributed under the terms of the GNU GPLv3 license.
-import math, logging
-import stepper, mathutil, chelper
+import logging
+import math
+
+import chelper
+import mathutil
+import stepper
 
 
 class RotaryDeltaKinematics:
