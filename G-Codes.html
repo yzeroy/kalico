@@ -2922,11 +2922,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
   <a href="#tr_discard_bowden_lengths" class="md-nav__link">
     <span class="md-ellipsis">
@@ -2934,8 +2929,7 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="TR_DISCARD_BOWDEN_LENGTHS">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#tr_assign_lane" class="md-nav__link">
@@ -6669,11 +6663,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
   <a href="#tr_discard_bowden_lengths" class="md-nav__link">
     <span class="md-ellipsis">
@@ -6681,8 +6670,7 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="TR_DISCARD_BOWDEN_LENGTHS">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#tr_assign_lane" class="md-nav__link">
@@ -8238,7 +8226,7 @@ specified and it is higher than the extruder's current temperature,
 then the extruder will be heated to at least <code>MIN_TEMP</code> before
 unloading/loading; the current extruder temperature target may be used
 instead if it is higher than <code>MIN_TEMP</code>, and if not then
-<a href="https://github.com/Annex-Engineering/TradRack/blob/main/docs/klipper/Save_Variables.md">tr_last_heater_target</a>
+<a href="https://github.com/Annex-Engineering/TradRack/blob/main/docs/kalico/Save_Variables.md">tr_last_heater_target</a>
 may be used. If <code>EXACT_TEMP</code> is specified, the extruder will be heated
 to <code>EXACT_TEMP</code> before unloading/loading, regardless of any other
 temperature setting. If any of the optional length parameters are
@@ -8260,7 +8248,7 @@ the extruder's current temperature, then the extruder will be heated
 to at least <code>MIN_TEMP</code> before unloading; the current extruder
 temperature target may be used instead if it is higher than
 <code>MIN_TEMP</code>, and if not then
-<a href="https://github.com/Annex-Engineering/TradRack/blob/main/docs/klipper/Save_Variables.md">tr_last_heater_target</a>
+<a href="https://github.com/Annex-Engineering/TradRack/blob/main/docs/kalico/Save_Variables.md">tr_last_heater_target</a>
 may be used. If <code>EXACT_TEMP</code> is specified, the extruder will be heated
 to <code>EXACT_TEMP</code> before unloading/loading, regardless of any other
 temperature setting.</p>
@@ -8342,7 +8330,7 @@ persist across restarts. If the VALUE parameter is used,
 hotend_load_length will be set to the value passed in. If the ADJUST
 parameter is used, the adjustment will be added to the current value
 of hotend_load_length.</p>
-<h3 id="tr_discard_bowden_lengths">TR_DISCARD_BOWDEN_LENGTHS<a class="headerlink" href="#tr_discard_bowden_lengths" title="Permanent link">&para;</a></h3>
+<h4 id="tr_discard_bowden_lengths">TR_DISCARD_BOWDEN_LENGTHS<a class="headerlink" href="#tr_discard_bowden_lengths" title="Permanent link">&para;</a></h4>
 <p><code>TR_DISCARD_BOWDEN_LENGTHS [MODE=[ALL|LOAD|UNLOAD]]</code>: Discards saved
 values for "bowden_load_length" and/or "bowden_unload_length" (see
 <a href="https://github.com/Annex-Engineering/TradRack/blob/main/docs/Tuning.md#bowden-lengths">bowden lengths</a>
@@ -8350,7 +8338,7 @@ for details on how these settings are used). These settings will each
 be reset to the value of <code>bowden_length</code> from the
 <a href="Config_Reference.html#trad_rack">trad_rack config section</a>, and empty
 dictionaries will be saved for
-<a href="https://github.com/Annex-Engineering/TradRack/blob/main/docs/klipper/Save_Variables.md">tr_calib_bowden_load_length and tr_calib_bowden_unload_length</a>.
+<a href="https://github.com/Annex-Engineering/TradRack/blob/main/docs/kalico/Save_Variables.md">tr_calib_bowden_load_length and tr_calib_bowden_unload_length</a>.
 "bowden_load_length" and tr_calib_bowden_load_length will be
 affected if MODE=LOAD is specified, "bowden_unload_length" and
 tr_calib_bowden_unload_length will be affected if MODE=UNLOAD is
