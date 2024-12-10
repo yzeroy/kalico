@@ -6634,6 +6634,12 @@ extended <a href="G-Codes.html#z_tilt">G-Code command</a> becomes available.</p>
 </code></pre></div>
 
 <h4 id="z_tilt_ng">[z_tilt_ng]<a class="headerlink" href="#z_tilt_ng" title="Permanent link">&para;</a></h4>
+<p>z_tilt's next generation, adding the Z_TILT_CALIBRATE and Z_TILT_AUTODETECT
+extended <a href="G-Codes.html#z_tilt_ng">G-Code commands</a>. Z_TILT_CALIBRATE performs multiple
+probing runs to calculate z_offsets, enabling accurate tilt adjustment with fewer
+probe points. Z_TILT_AUTODETECT automatically determines pivot positions for each
+Z stepper through iterative probing. When this section is present, these extended
+commands become available, enhancing bed leveling accuracy and calibration efficiency.</p>
 <div class="highlight"><pre><span></span><code>[z_tilt_ng]
 #z_positions:
 # See [z_tilt]. This parameter must be provided,

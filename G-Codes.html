@@ -3095,6 +3095,30 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#z_tilt_ng" class="md-nav__link">
+    <span class="md-ellipsis">
+      [z_tilt_ng]
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="[z_tilt_ng]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#z_tilt_adjust_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Z_TILT_ADJUST
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6836,6 +6860,30 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#z_tilt_ng" class="md-nav__link">
+    <span class="md-ellipsis">
+      [z_tilt_ng]
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="[z_tilt_ng]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#z_tilt_adjust_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Z_TILT_ADJUST
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -7133,7 +7181,7 @@ for gcode execution. A value of 0 will cancel a pending delayed gcode
 from executing.</p>
 <h3 id="delta_calibrate">[delta_calibrate]<a class="headerlink" href="#delta_calibrate" title="Permanent link">&para;</a></h3>
 <p>The following commands are available when the
-[delta_calibrate] config section is enabled (also see the 
+[delta_calibrate] config section is enabled (also see the
 <a href="Delta_Calibrate.html">delta calibrate guide</a>).</p>
 <h4 id="delta_calibrate_1">DELTA_CALIBRATE<a class="headerlink" href="#delta_calibrate_1" title="Permanent link">&para;</a></h4>
 <p><code>DELTA_CALIBRATE [METHOD=manual] [HORIZONTAL_MOVE_Z=&lt;value&gt;]
@@ -8454,6 +8502,15 @@ and detach a mag-probe for these commands!</li>
 <p>The following commands are available when the
 <a href="Config_Reference.html#z_tilt">z_tilt config section</a> is enabled.</p>
 <h4 id="z_tilt_adjust">Z_TILT_ADJUST<a class="headerlink" href="#z_tilt_adjust" title="Permanent link">&para;</a></h4>
+<p><code>Z_TILT_ADJUST [HORIZONTAL_MOVE_Z=&lt;value&gt;] [&lt;probe_parameter&gt;=&lt;value&gt;]</code>: This
+command will probe the points specified in the config and then make independent
+adjustments to each Z stepper to compensate for tilt. See the PROBE command for
+details on the optional probe parameters. The optional <code>HORIZONTAL_MOVE_Z</code>
+value overrides the <code>horizontal_move_z</code> option specified in the config file.</p>
+<h3 id="z_tilt_ng">[z_tilt_ng]<a class="headerlink" href="#z_tilt_ng" title="Permanent link">&para;</a></h3>
+<p>The following commands are available when the
+<a href="Config_Reference.html#z_tilt_ng">z_tilt_ng config section</a> is enabled.</p>
+<h4 id="z_tilt_adjust_1">Z_TILT_ADJUST<a class="headerlink" href="#z_tilt_adjust_1" title="Permanent link">&para;</a></h4>
 <p><code>Z_TILT_ADJUST [HORIZONTAL_MOVE_Z=&lt;value&gt;] [&lt;probe_parameter&gt;=&lt;value&gt;]
 [INCREASING_THRESHOLD=&lt;value&gt;]</code>: This
 command will probe the points specified in the config and then make independent
@@ -8477,9 +8534,7 @@ configured in the z_tilt_ng section:</p>
   It works silimar to Z_TILT_CALIBRATE, but it probes the bed with intential
   small misalgnments of the steppers. The amount of misalignment can be
   configured with the DELTA paramter. It iterates until the calculated
-  positions cannot be improved any further. This is can be lengthy procedure.
-IMPORTANT: For the Z_TILT_CALIBRATE and Z_TILT_AUTODETECT commands to work
-the numpy package has to be installed via ~/klippy-env/bin/pip install -v numpy.</li>
+  positions cannot be improved any further. This is can be lengthy procedure.</li>
 </ul>
 
 
