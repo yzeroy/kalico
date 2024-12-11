@@ -524,6 +524,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#configuration-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚠️ Configuration references
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#common-kinematic-settings" class="md-nav__link">
     <span class="md-ellipsis">
       Common kinematic settings
@@ -3689,6 +3698,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#configuration-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚠️ Configuration references
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#common-kinematic-settings" class="md-nav__link">
     <span class="md-ellipsis">
       Common kinematic settings
@@ -5461,6 +5479,26 @@ pins such as "extra_mcu:ar9" may then be used elsewhere in the config
 #log_serial_reader_warnings: True
 #log_startup_info: True
 #log_webhook_method_register_messages: False
+</code></pre></div>
+
+<h2 id="configuration-references">⚠️ Configuration references<a class="headerlink" href="#configuration-references" title="Permanent link">&para;</a></h2>
+<p>In your configuration, you can reference other values to share
+configuration between multiple sections. References take the form of
+<code>${option}</code> to copy a value in the current section, or
+<code>${section.option}</code> to look up a value elsewhere in your configuration.</p>
+<p>Optionally, a <code>[constants]</code> section may be used specifically to store
+these values. Unlike the rest of your configuration, unused constants
+will show a warning instead of causing an error.</p>
+<div class="highlight"><pre><span></span><code>[constants]
+run_current_ab:  1.0
+i_am_not_used: True  # Will show &quot;Constant &#39;i_am_not_used&#39; is unused&quot;
+
+[tmc5160 stepper_x]
+run_current: ${constants.run_current_ab}
+
+[tmc5160 stepper_y]
+run_current: ${tmc5160 stepper_x.run_current}
+#   Nested references work, but are not advised
 </code></pre></div>
 
 <h2 id="common-kinematic-settings">Common kinematic settings<a class="headerlink" href="#common-kinematic-settings" title="Permanent link">&para;</a></h2>
