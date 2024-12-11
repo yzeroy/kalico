@@ -803,26 +803,24 @@ class ToolHead:
         if min_cruise_ratio is not None:
             self.min_cruise_ratio = min_cruise_ratio
         self._calc_junction_deviation()
-        msg = (
-            "max_velocity: %.6f\n"
-            "max_accel: %.6f\n"
-            "minimum_cruise_ratio: %.6f\n"
-            "square_corner_velocity: %.6f"
-            % (
-                self.max_velocity,
-                self.max_accel,
-                self.min_cruise_ratio,
-                self.square_corner_velocity,
-            )
+        msg = [
+            f"max_velocity: {self.max_velocity}",
+            f"max_accel: {self.max_accel}",
+            f"minimum_cruise_ratio: {self.min_cruise_ratio}",
+            f"square_corner_velocity: {self.square_corner_velocity}",
+        ]
+        self.printer.set_rollover_info(
+            "toolhead",
+            "toolhead: %s" % (", ".join(msg),),
+            get_danger_options().log_velocity_limit_changes,
         )
-        self.printer.set_rollover_info("toolhead", "toolhead: %s" % (msg,))
         if (
             max_velocity is None
             and max_accel is None
             and square_corner_velocity is None
             and min_cruise_ratio is None
         ):
-            gcmd.respond_info(msg, log=False)
+            gcmd.respond_info("\n".join(msg), log=False)
 
     def cmd_M204(self, gcmd):
         # Use S for accel

@@ -135,6 +135,9 @@ A collection of Kalico-specific system options
 #   If the bed mesh should be logged at startup
 #   (helpful for keeping the log clean during development)
 #   The default is True.
+#log_velocity_limit_changes: True
+#   If changes to the velocity limits from SET_VELOCITY_LIMITS should be
+#   logged.
 #log_shutdown_info: True
 #   If we should log detailed crash info when an exception occurs
 #   Most of it is overly-verbose and fluff and we still get a stack trace
