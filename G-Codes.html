@@ -7185,9 +7185,18 @@ available for tle5012b chips.</p>
 <a href="Config_Reference.html#axis_twist_compensation">axis_twist_compensation config
 section</a> is enabled.</p>
 <h4 id="axis_twist_compensation_calibrate">AXIS_TWIST_COMPENSATION_CALIBRATE<a class="headerlink" href="#axis_twist_compensation_calibrate" title="Permanent link">&para;</a></h4>
-<p><code>AXIS_TWIST_COMPENSATION_CALIBRATE [SAMPLE_COUNT=&lt;value&gt;]</code>: Initiates the X
-twist calibration wizard. <code>SAMPLE_COUNT</code> specifies the number of points along
-the X axis to calibrate at and defaults to 3.</p>
+<p><code>AXIS_TWIST_COMPENSATION_CALIBRATE [AXIS=&lt;X|Y&gt;] 
+[SAMPLE_COUNT=&lt;value&gt;] [&lt;probe_parameter&gt;=&lt;value&gt;]</code>:</p>
+<p>Calibrates axis twist compensation by specifying the target axis or
+enabling automatic calibration.</p>
+<ul>
+<li><strong>SAMPLE_COUNT:</strong> Number of points tested during the calibration.
+If not specified, it defaults to 3.</li>
+</ul>
+<ul>
+<li><strong>AXIS:</strong> Define the axis (<code>X</code> or <code>Y</code>) for which the twist compensation
+will be calibrated. If not specified, the axis defaults to <code>'X'</code>.</li>
+</ul>
 <h3 id="bed_mesh">[bed_mesh]<a class="headerlink" href="#bed_mesh" title="Permanent link">&para;</a></h3>
 <p>The following commands are available when the
 <a href="Config_Reference.html#bed_mesh">bed_mesh config section</a> is enabled
