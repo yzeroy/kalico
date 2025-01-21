@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.kalico.gg/TMC_Drivers.html">
+        <link rel="canonical" href="https://docs.kalico.gg/Kalico_Additions.html">
       
       
-        <link rel="prev" href="OctoPrint.html">
+        <link rel="prev" href="Config_Reference.html">
       
       
-        <link rel="next" href="Config_checks.html">
+        <link rel="next" href="Bleeding_Edge.html">
       
       
       <link rel="icon" href="logo/kalico-32x32.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>TMC drivers - Kalico Documentation</title>
+        <title>Kalico additions - Kalico Documentation</title>
       
     
     
@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#tmc-drivers" class="md-skip">
+        <a href="#kalico-additions" class="md-skip">
           Skip to content
         </a>
       
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              TMC drivers
+              Kalico additions
             
           </span>
         </div>
@@ -387,17 +387,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -411,7 +413,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             Configuration
@@ -443,10 +445,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="Kalico_Additions.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Kalico additions
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="Kalico_Additions.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -455,6 +477,107 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#changes-to-klipper-defaults" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changes to Klipper defaults
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-configuration-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional configuration options
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enhanced-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enhanced behavior
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#new-kalico-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      New Kalico Modules
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sensorless-homing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sensorless Homing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#probes-and-probing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Probes and Probing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#heaters-fans-and-pid-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Heaters, Fans, and PID changes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#macros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Macros
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plugins
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -702,19 +825,17 @@
       
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
         
           
           <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
@@ -728,7 +849,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             Getting up and running
@@ -802,30 +923,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    TMC drivers
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="TMC_Drivers.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="TMC_Drivers.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -834,293 +935,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#tuning-motor-current" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tuning motor current
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#prefer-to-not-specify-a-hold_current" class="md-nav__link">
-    <span class="md-ellipsis">
-      Prefer to not specify a hold_current
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#setting-spreadcycle-vs-stealthchop-mode" class="md-nav__link">
-    <span class="md-ellipsis">
-      Setting "spreadCycle" vs "stealthChop" Mode
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tmc-interpolate-setting-introduces-small-position-deviation" class="md-nav__link">
-    <span class="md-ellipsis">
-      TMC interpolate setting introduces small position deviation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sensorless-homing" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sensorless Homing
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Sensorless Homing">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#limitations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Limitations
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    <span class="md-ellipsis">
-      Prerequisites
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tuning" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tuning
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Tuning">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#choose-homing-speed" class="md-nav__link">
-    <span class="md-ellipsis">
-      Choose homing speed
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configure-printercfg-for-sensorless-homing" class="md-nav__link">
-    <span class="md-ellipsis">
-      Configure printer.cfg for sensorless homing
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#find-highest-sensitivity-that-successfully-homes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Find highest sensitivity that successfully homes
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#find-lowest-sensitivity-that-homes-with-one-touch" class="md-nav__link">
-    <span class="md-ellipsis">
-      Find lowest sensitivity that homes with one touch
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#update-printercfg-with-sensitivity-value" class="md-nav__link">
-    <span class="md-ellipsis">
-      Update printer.cfg with sensitivity value
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#using-macros-when-homing" class="md-nav__link">
-    <span class="md-ellipsis">
-      Using Macros when Homing
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tips-for-sensorless-homing-on-corexy" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tips for sensorless homing on CoreXY
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#querying-and-diagnosing-driver-settings" class="md-nav__link">
-    <span class="md-ellipsis">
-      Querying and diagnosing driver settings
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuring-driver_xxx-settings" class="md-nav__link">
-    <span class="md-ellipsis">
-      Configuring driver_XXX settings
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#common-questions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Common Questions
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Common Questions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#can-i-use-stealthchop-mode-on-an-extruder-with-pressure-advance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Can I use stealthChop mode on an extruder with pressure advance?
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#i-keep-getting-unable-to-read-tmc-uart-stepper_x-register-ifcnt-errors" class="md-nav__link">
-    <span class="md-ellipsis">
-      I keep getting "Unable to read tmc uart 'stepper_x' register IFCNT" errors?
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#i-keep-getting-unable-to-write-tmc-spi-stepper_x-register-errors" class="md-nav__link">
-    <span class="md-ellipsis">
-      I keep getting "Unable to write tmc spi 'stepper_x' register ..." errors?
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#why-did-i-get-a-tmc-reports-error-error" class="md-nav__link">
-    <span class="md-ellipsis">
-      Why did I get a "TMC reports error: ..." error?
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Why did I get a "TMC reports error: ..." error?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#tmc-reports-error-ot1overtemperror" class="md-nav__link">
-    <span class="md-ellipsis">
-      TMC reports error: ... ot=1(OvertempError!)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tmc-reports-error-shorttognd-or-shorttosupply" class="md-nav__link">
-    <span class="md-ellipsis">
-      TMC reports error: ... ShortToGND OR ShortToSupply
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tmc-reports-error-reset1reset-or-cs_actual0reset-or-se0reset" class="md-nav__link">
-    <span class="md-ellipsis">
-      TMC reports error: ... reset=1(Reset) OR CS_ACTUAL=0(Reset?) OR SE=0(Reset?)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tmc-reports-error-uv_cp1undervoltage" class="md-nav__link">
-    <span class="md-ellipsis">
-      TMC reports error: ... uv_cp=1(Undervoltage!)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#how-do-i-tune-spreadcyclecoolstepetc-mode-on-my-drivers" class="md-nav__link">
-    <span class="md-ellipsis">
-      How do I tune spreadCycle/coolStep/etc. mode on my drivers?
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2231,36 +2045,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#tuning-motor-current" class="md-nav__link">
+  <a href="#changes-to-klipper-defaults" class="md-nav__link">
     <span class="md-ellipsis">
-      Tuning motor current
+      Changes to Klipper defaults
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#prefer-to-not-specify-a-hold_current" class="md-nav__link">
+  <a href="#additional-configuration-options" class="md-nav__link">
     <span class="md-ellipsis">
-      Prefer to not specify a hold_current
+      Additional configuration options
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#setting-spreadcycle-vs-stealthchop-mode" class="md-nav__link">
+  <a href="#enhanced-behavior" class="md-nav__link">
     <span class="md-ellipsis">
-      Setting "spreadCycle" vs "stealthChop" Mode
+      Enhanced behavior
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#tmc-interpolate-setting-introduces-small-position-deviation" class="md-nav__link">
+  <a href="#new-kalico-modules" class="md-nav__link">
     <span class="md-ellipsis">
-      TMC interpolate setting introduces small position deviation
+      New Kalico Modules
     </span>
   </a>
   
@@ -2273,227 +2087,41 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Sensorless Homing">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#limitations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Limitations
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    <span class="md-ellipsis">
-      Prerequisites
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tuning" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tuning
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Tuning">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#choose-homing-speed" class="md-nav__link">
-    <span class="md-ellipsis">
-      Choose homing speed
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configure-printercfg-for-sensorless-homing" class="md-nav__link">
-    <span class="md-ellipsis">
-      Configure printer.cfg for sensorless homing
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#find-highest-sensitivity-that-successfully-homes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Find highest sensitivity that successfully homes
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#find-lowest-sensitivity-that-homes-with-one-touch" class="md-nav__link">
-    <span class="md-ellipsis">
-      Find lowest sensitivity that homes with one touch
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#update-printercfg-with-sensitivity-value" class="md-nav__link">
-    <span class="md-ellipsis">
-      Update printer.cfg with sensitivity value
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#using-macros-when-homing" class="md-nav__link">
-    <span class="md-ellipsis">
-      Using Macros when Homing
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tips-for-sensorless-homing-on-corexy" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tips for sensorless homing on CoreXY
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
-  <a href="#querying-and-diagnosing-driver-settings" class="md-nav__link">
+  <a href="#probes-and-probing" class="md-nav__link">
     <span class="md-ellipsis">
-      Querying and diagnosing driver settings
+      Probes and Probing
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#configuring-driver_xxx-settings" class="md-nav__link">
+  <a href="#heaters-fans-and-pid-changes" class="md-nav__link">
     <span class="md-ellipsis">
-      Configuring driver_XXX settings
+      Heaters, Fans, and PID changes
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#common-questions" class="md-nav__link">
+  <a href="#macros" class="md-nav__link">
     <span class="md-ellipsis">
-      Common Questions
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Common Questions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#can-i-use-stealthchop-mode-on-an-extruder-with-pressure-advance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Can I use stealthChop mode on an extruder with pressure advance?
+      Macros
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#i-keep-getting-unable-to-read-tmc-uart-stepper_x-register-ifcnt-errors" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#plugins" class="md-nav__link">
     <span class="md-ellipsis">
-      I keep getting "Unable to read tmc uart 'stepper_x' register IFCNT" errors?
+      Plugins
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#i-keep-getting-unable-to-write-tmc-spi-stepper_x-register-errors" class="md-nav__link">
-    <span class="md-ellipsis">
-      I keep getting "Unable to write tmc spi 'stepper_x' register ..." errors?
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#why-did-i-get-a-tmc-reports-error-error" class="md-nav__link">
-    <span class="md-ellipsis">
-      Why did I get a "TMC reports error: ..." error?
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Why did I get a "TMC reports error: ..." error?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#tmc-reports-error-ot1overtemperror" class="md-nav__link">
-    <span class="md-ellipsis">
-      TMC reports error: ... ot=1(OvertempError!)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tmc-reports-error-shorttognd-or-shorttosupply" class="md-nav__link">
-    <span class="md-ellipsis">
-      TMC reports error: ... ShortToGND OR ShortToSupply
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tmc-reports-error-reset1reset-or-cs_actual0reset-or-se0reset" class="md-nav__link">
-    <span class="md-ellipsis">
-      TMC reports error: ... reset=1(Reset) OR CS_ACTUAL=0(Reset?) OR SE=0(Reset?)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tmc-reports-error-uv_cp1undervoltage" class="md-nav__link">
-    <span class="md-ellipsis">
-      TMC reports error: ... uv_cp=1(Undervoltage!)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#how-do-i-tune-spreadcyclecoolstepetc-mode-on-my-drivers" class="md-nav__link">
-    <span class="md-ellipsis">
-      How do I tune spreadCycle/coolStep/etc. mode on my drivers?
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2512,7 +2140,7 @@
                   
 
   
-    <a href="https://github.com/KalicoCrew/kalico/edit/main/docs/TMC_Drivers.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/KalicoCrew/kalico/edit/main/docs/Kalico_Additions.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -2520,450 +2148,74 @@
   
 
 
-<h1 id="tmc-drivers">TMC drivers<a class="headerlink" href="#tmc-drivers" title="Permanent link">&para;</a></h1>
-<p>This document provides information on using Trinamic stepper motor
-drivers in SPI/UART mode on Kalico.</p>
-<p>Kalico can also use Trinamic drivers in their "standalone mode".
-However, when the drivers are in this mode, no special Kalico
-configuration is needed and the advanced Kalico features discussed in
-this document are not available.</p>
-<p>In addition to this document, be sure to review the
-<a href="Config_Reference.html#tmc-stepper-driver-configuration">TMC driver config reference</a>.</p>
-<h2 id="tuning-motor-current">Tuning motor current<a class="headerlink" href="#tuning-motor-current" title="Permanent link">&para;</a></h2>
-<p>A higher driver current increases positional accuracy and torque.
-However, a higher current also increases the heat produced by the
-stepper motor and the stepper motor driver. If the stepper motor
-driver gets too hot it will disable itself and Kalico will report an
-error. If the stepper motor gets too hot, it loses torque and
-positional accuracy. (If it gets very hot it may also melt plastic
-parts attached to it or near it.)</p>
-<p>As a general tuning tip, prefer higher current values as long as the
-stepper motor does not get too hot and the stepper motor driver does
-not report warnings or errors. In general, it is okay for the stepper
-motor to feel warm, but it should not become so hot that it is painful
-to touch.</p>
-<h2 id="prefer-to-not-specify-a-hold_current">Prefer to not specify a hold_current<a class="headerlink" href="#prefer-to-not-specify-a-hold_current" title="Permanent link">&para;</a></h2>
-<p>If one configures a <code>hold_current</code> then the TMC driver can reduce
-current to the stepper motor when it detects that the stepper is not
-moving. However, changing motor current may itself introduce motor
-movement. This may occur due to "detent forces" within the stepper
-motor (the permanent magnet in the rotor pulls towards the iron teeth
-in the stator) or due to external forces on the axis carriage.</p>
-<p>Most stepper motors will not obtain a significant benefit to reducing
-current during normal prints, because few printing moves will leave a
-stepper motor idle for sufficiently long to activate the
-<code>hold_current</code> feature. And, it is unlikely that one would want to
-introduce subtle print artifacts to the few printing moves that do
-leave a stepper idle sufficiently long.</p>
-<p>If one wishes to reduce current to motors during print start routines,
-then consider issuing
-<a href="G-Codes.html#set_tmc_current">SET_TMC_CURRENT</a> commands in a
-<a href="Slicers.html#kalico-gcode_macro">START_PRINT macro</a> to adjust the
-current before and after normal printing moves.</p>
-<p>Some printers with dedicated Z motors that are idle during normal
-printing moves (no bed_mesh, no bed_tilt, no Z skew_correction, no
-"vase mode" prints, etc.) may find that Z motors do run cooler with a
-<code>hold_current</code>. If implementing this then be sure to take into account
-this type of uncommanded Z axis movement during bed leveling, bed
-probing, probe calibration, and similar. The <code>driver_TPOWERDOWN</code> and
-<code>driver_IHOLDDELAY</code> should also be calibrated accordingly. If unsure,
-prefer to not specify a <code>hold_current</code>.</p>
-<h2 id="setting-spreadcycle-vs-stealthchop-mode">Setting "spreadCycle" vs "stealthChop" Mode<a class="headerlink" href="#setting-spreadcycle-vs-stealthchop-mode" title="Permanent link">&para;</a></h2>
-<p>By default, Kalico places the TMC drivers in "spreadCycle" mode. If
-the driver supports "stealthChop" then it can be enabled by adding
-<code>stealthchop_threshold: 999999</code> to the TMC config section.</p>
-<p>In general, spreadCycle mode provides greater torque and greater
-positional accuracy than stealthChop mode. However, stealthChop mode
-may produce significantly lower audible noise on some printers.</p>
-<p>Tests comparing modes have shown an increased "positional lag" of
-around 75% of a full-step during constant velocity moves when using
-stealthChop mode (for example, on a printer with 40mm
-rotation_distance and 200 steps_per_rotation, position deviation of
-constant speed moves increased by ~0.150mm). However, this "delay in
-obtaining the requested position" may not manifest as a significant
-print defect and one may prefer the quieter behavior of stealthChop
-mode.</p>
-<p>It is recommended to always use "spreadCycle" mode (by not specifying
-<code>stealthchop_threshold</code>) or to always use "stealthChop" mode (by
-setting <code>stealthchop_threshold</code> to 999999). Unfortunately, the drivers
-often produce poor and confusing results if the mode changes while the
-motor is at a non-zero velocity.</p>
-<h2 id="tmc-interpolate-setting-introduces-small-position-deviation">TMC interpolate setting introduces small position deviation<a class="headerlink" href="#tmc-interpolate-setting-introduces-small-position-deviation" title="Permanent link">&para;</a></h2>
-<p>The TMC driver <code>interpolate</code> setting may reduce the audible noise of
-printer movement at the cost of introducing a small systemic
-positional error. This systemic positional error results from the
-driver's delay in executing "steps" that Kalico sends it. During
-constant velocity moves, this delay results in a positional error of
-nearly half a configured microstep (more precisely, the error is half
-a microstep distance minus a 512th of a full step distance). For
-example, on an axis with a 40mm rotation_distance, 200
-steps_per_rotation, and 16 microsteps, the systemic error introduced
-during constant velocity moves is ~0.006mm.</p>
-<p>For best positional accuracy consider using spreadCycle mode and
-disable interpolation (set <code>interpolate: False</code> in the TMC driver
-config). When configured this way, one may increase the <code>microstep</code>
-setting to reduce audible noise during stepper movement. Typically, a
-microstep setting of <code>64</code> or <code>128</code> will have similar audible noise as
-interpolation, and do so without introducing a systemic positional
-error.</p>
-<p>If using stealthChop mode then the positional inaccuracy from
-interpolation is small relative to the positional inaccuracy
-introduced from stealthChop mode. Therefore tuning interpolation is
-not considered useful when in stealthChop mode, and one can leave
-interpolation in its default state.</p>
+<h1 id="kalico-additions">Kalico additions<a class="headerlink" href="#kalico-additions" title="Permanent link">&para;</a></h1>
+<h2 id="changes-to-klipper-defaults">Changes to Klipper defaults<a class="headerlink" href="#changes-to-klipper-defaults" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="Config_Reference.html#force_move"><code>[force_move]</code></a> is enabled by default. Use <code>[force_move] enable_force_move: False</code> to disable it</li>
+<li><a href="Config_Reference.html#respond"><code>[respond]</code></a> is enabled by default. Use <code>[respond] enable_respond: False</code> to disable it</li>
+<li><a href="Config_Reference.html#exclude_object"><code>[exclude_object]</code></a> is enabled by default. Use <code>[exclude_object] enable_exclude_object: False</code> to disable it</li>
+</ul>
+<h2 id="additional-configuration-options">Additional configuration options<a class="headerlink" href="#additional-configuration-options" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="Config_Reference.html#mcu"><code>[mcu] is_non_critical</code></a> enables marking of an mcu as optional - it can be freely disconnected and connected at will. (useful for MCU-based accelerometer boards, mcu-based probes that shut down in hot chambers, etc...)</li>
+<li><a href="Config_Reference.html#danger-options"><code>[danger_options]</code></a> - New configuration options to adjust Kalico values that were previously hidden</li>
+<li>Additional kinematics versions enabled per-axis acceleration, see <a href="Config_Reference.html#cartesian-kinematics-with-limits-for-x-and-y-axes">limited_cartesian</a> and <a href="Config_Reference.html#corexy-kinematics-with-limits-for-x-and-y-axes">limited_corexy</a></li>
+<li><code>--rotate-log-at-restart</code> can be added to your Kalico start script or service to force log rotation every restart.</li>
+<li><a href="Config_Reference.html#virtual_sdcard"><code>[virtual_sdcard] with_subdirs</code></a> enables scanning of subdirectories for .gcode files, for the menu and M20/M23 commands</li>
+<li><a href="Config_Reference.html#firmware_retraction"><code>[firmware_retraction] z_hop_height</code></a> adds an automatic z hop when using firmware retraction</li>
+<li><a href="Config_Reference.html#configuration-references"><code>[constants]</code> and <code>${constants.value}</code></a> allow re-using values in your configuration</li>
+</ul>
+<h2 id="enhanced-behavior">Enhanced behavior<a class="headerlink" href="#enhanced-behavior" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="CANBUS.html#finding-the-canbus_uuid-for-new-micro-controllers"><code>canbus_query.py</code></a> now responds with all Kalico devices, even after they've been assigned a node_id.</li>
+</ul>
+<h2 id="new-kalico-modules">New Kalico Modules<a class="headerlink" href="#new-kalico-modules" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="G-Code_Shell_Command.html">gcode_shell_command</a> - Execute linux commands and scripts from within Kalico</li>
+</ul>
 <h2 id="sensorless-homing">Sensorless Homing<a class="headerlink" href="#sensorless-homing" title="Permanent link">&para;</a></h2>
-<p>Sensorless homing allows to home an axis without the need for a
-physical limit switch. Instead, the carriage on the axis is moved into
-the mechanical limit making the stepper motor lose steps. The stepper
-driver senses the lost steps and indicates this to the controlling MCU
-(Kalico) by toggling a pin. This information can be used by Kalico
-as end stop for the axis.</p>
-<p>This guide covers the setup of sensorless homing for the X axis of
-your (cartesian) printer. However, it works the same with all other
-axes (that require an end stop). You should configure and tune it for
-one axis at a time.</p>
-<h3 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Permanent link">&para;</a></h3>
-<p>Be sure that your mechanical components are able to handle the load of
-the carriage bumping into the limit of the axis repeatedly. Especially
-leadscrews might generate a lot of force. Homing a Z axis by bumping
-the nozzle into the printing surface might not be a good idea. For
-best results, verify that the axis carriage will make a firm contact
-with the axis limit.</p>
-<p>Further, sensorless homing might not be accurate enough for your
-printer. While homing X and Y axes on a cartesian machine can work
-well, homing the Z axis is generally not accurate enough and may
-result in an inconsistent first layer height. Homing a delta printer
-sensorless is not advisable due to missing accuracy.</p>
-<p>Further, the stall detection of the stepper driver is dependent on the
-mechanical load on the motor, the motor current and the motor
-temperature (coil resistance).</p>
-<p>Sensorless homing works best at medium motor speeds. For very slow
-speeds (less than 10 RPM) the motor does not generate significant back
-EMF and the TMC cannot reliably detect motor stalls. Further, at very
-high speeds, the back EMF of the motor approaches the supply voltage
-of the motor, so the TMC cannot detect stalls anymore. It is advised
-to have a look in the datasheet of your specific TMCs. There you can
-also find more details on limitations of this setup.</p>
-<h3 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h3>
-<p>A few prerequisites are needed to use sensorless homing:</p>
-<ol>
-<li>A stallGuard capable TMC stepper driver (tmc2130, tmc2209, tmc2660,
-    tmc5160 or tmc2160).</li>
-<li>SPI / UART interface of the TMC driver wired to micro-controller
-   (stand-alone mode does not work).</li>
-<li>The appropriate "DIAG" or "SG_TST" pin of TMC driver connected to
-   the micro-controller.</li>
-<li>The steps in the <a href="Config_checks.html">config checks</a> document must be
-   run to confirm the stepper motors are configured and working
-   properly.</li>
-</ol>
-<h3 id="tuning">Tuning<a class="headerlink" href="#tuning" title="Permanent link">&para;</a></h3>
-<p>The procedure described here has six major steps:</p>
-<ol>
-<li>Choose a homing speed.</li>
-<li>Configure the <code>printer.cfg</code> file to enable sensorless homing.</li>
-<li>Find the stallguard setting with highest sensitivity that
-   successfully homes.</li>
-<li>Find the stallguard setting with lowest sensitivity that
-   successfully homes with a single touch.</li>
-<li>Update the <code>printer.cfg</code> with the desired stallguard setting.</li>
-<li>Create or update <code>printer.cfg</code> macros to home consistently.</li>
-</ol>
-<h4 id="choose-homing-speed">Choose homing speed<a class="headerlink" href="#choose-homing-speed" title="Permanent link">&para;</a></h4>
-<p>The homing speed is an important choice when performing sensorless
-homing. It's desirable to use a slow homing speed so that the carriage
-does not exert excessive force on the frame when making contact with
-the end of the rail. However, the TMC drivers can't reliably detect a
-stall at very slow speeds.</p>
-<p>A good starting point for the homing speed is for the stepper motor to
-make a full rotation every two seconds. For many axes this will be the
-<code>rotation_distance</code> divided by two. For example:</p>
-<div class="highlight"><pre><span></span><code>[stepper_x]
-rotation_distance: 40
-homing_speed: 20
-...
-</code></pre></div>
-
-<h4 id="configure-printercfg-for-sensorless-homing">Configure printer.cfg for sensorless homing<a class="headerlink" href="#configure-printercfg-for-sensorless-homing" title="Permanent link">&para;</a></h4>
-<p>Be sure that a <code>hold_current</code> setting is not specified in the TMC
-driver section of the config. (If a hold_current is set then after
-contact is made, the motor stops while the carriage is pressed against
-the end of the rail, and reducing the current while in that position
-may cause the carriage to move - that results in poor performance and
-will confuse the tuning process.)</p>
-<p>It is necessary to configure the sensorless homing pins and to
-configure initial "stallguard" settings. A tmc2209 example
-configuration for an X axis might look like:</p>
-<div class="highlight"><pre><span></span><code>[tmc2209 stepper_x]
-diag_pin: ^PA1      # Set to MCU pin connected to TMC DIAG pin
-driver_SGTHRS: 255  # 255 is most sensitive value, 0 is least sensitive
-home_current: 1
-...
-
-[stepper_x]
-endstop_pin: tmc2209_stepper_x:virtual_endstop
-homing_retract_dist: 10 # Must be greater than 0 or set use_sensorless_homing: True
-...
-</code></pre></div>
-
-<p>An example tmc2130 or tmc5160 config might look like:</p>
-<div class="highlight"><pre><span></span><code>[tmc2130 stepper_x]
-diag1_pin: ^!PA1 # Pin connected to TMC DIAG1 pin (or use diag0_pin / DIAG0 pin)
-driver_SGT: -64  # -64 is most sensitive value, 63 is least sensitive
-home_current: 1
-...
-
-[stepper_x]
-endstop_pin: tmc2130_stepper_x:virtual_endstop
-homing_retract_dist: 10
-...
-</code></pre></div>
-
-<p>An example tmc2660 config might look like:</p>
-<div class="highlight"><pre><span></span><code>[tmc2660 stepper_x]
-driver_SGT: -64     # -64 is most sensitive value, 63 is least sensitive
-home_current: 1
-...
-
-[stepper_x]
-endstop_pin: ^PA1   # Pin connected to TMC SG_TST pin
-use_sensorless_homing: True # Required if endstop_pin is not a virtual_endstop
-homing_retract_dist: 10
-...
-</code></pre></div>
-
-<p>The examples above only show settings specific to sensorless
-homing. See the
-<a href="Config_Reference.html#tmc-stepper-driver-configuration">config reference</a>
-for all the available options.</p>
-<h4 id="find-highest-sensitivity-that-successfully-homes">Find highest sensitivity that successfully homes<a class="headerlink" href="#find-highest-sensitivity-that-successfully-homes" title="Permanent link">&para;</a></h4>
-<p>Place the carriage near the center of the rail. Use the SET_TMC_FIELD
-command to set the highest sensitivity. For tmc2209:</p>
-<div class="highlight"><pre><span></span><code>SET_TMC_FIELD STEPPER=stepper_x FIELD=SGTHRS VALUE=255
-</code></pre></div>
-
-<p>For tmc2130, tmc5160, tmc2160, and tmc2660:</p>
-<div class="highlight"><pre><span></span><code>SET_TMC_FIELD STEPPER=stepper_x FIELD=sgt VALUE=-64
-</code></pre></div>
-
-<p>Then issue a <code>G28 X0</code> command and verify the axis does not move at all
-or quickly stops moving. If the axis does not stop, then issue an
-<code>M112</code> to halt the printer - something is not correct with the
-diag/sg_tst pin wiring or configuration and it must be corrected
-before continuing.</p>
-<p>Next, continually decrease the sensitivity of the <code>VALUE</code> setting and
-run the <code>SET_TMC_FIELD</code> <code>G28 X0</code> commands again to find the highest
-sensitivity that results in the carriage successfully moving all the
-way to the endstop and halting. (For tmc2209 drivers this will be
-decreasing SGTHRS, for other drivers it will be increasing sgt.) Be
-sure to start each attempt with the carriage near the center of the
-rail (if needed issue <code>M84</code> and then manually move the carriage to the
-center). It should be possible to find the highest sensitivity that
-homes reliably (settings with higher sensitivity result in small or no
-movement). Note the found value as <em>maximum_sensitivity</em>. (If the
-minimum possible sensitivity (SGTHRS=0 or sgt=63) is obtained without
-any carriage movement then something is not correct with the
-diag/sg_tst pin wiring or configuration and it must be corrected
-before continuing.)</p>
-<p>When searching for maximum_sensitivity, it may be convenient to jump
-to different VALUE settings (so as to bisect the VALUE parameter). If
-doing this then be prepared to issue an <code>M112</code> command to halt the
-printer, as a setting with a very low sensitivity may cause the axis
-to repeatedly "bang" into the end of the rail.</p>
-<p>Be sure to wait a couple of seconds between each homing attempt. After
-the TMC driver detects a stall it may take a little time for it to
-clear its internal indicator and be capable of detecting another
-stall.</p>
-<p>During these tuning tests, if a <code>G28 X0</code> command does not move all the
-way to the axis limit, then be careful with issuing any regular
-movement commands (eg, <code>G1</code>). Kalico will not have a correct
-understanding of the carriage position and a move command may cause
-undesirable and confusing results.</p>
-<h4 id="find-lowest-sensitivity-that-homes-with-one-touch">Find lowest sensitivity that homes with one touch<a class="headerlink" href="#find-lowest-sensitivity-that-homes-with-one-touch" title="Permanent link">&para;</a></h4>
-<p>When homing with the found <em>maximum_sensitivity</em> value, the axis
-should move to the end of the rail and stop with a "single touch" -
-that is, there should not be a "clicking" or "banging" sound. (If
-there is a banging or clicking sound at maximum_sensitivity then the
-homing_speed may be too low, the driver current may be too low, or
-sensorless homing may not be a good choice for the axis.)</p>
-<p>The next step is to again continually move the carriage to a position
-near the center of the rail, decrease the sensitivity, and run the
-<code>SET_TMC_FIELD</code> <code>G28 X0</code> commands - the goal is now to find the lowest
-sensitivity that still results in the carriage successfully homing
-with a "single touch". That is, it does not "bang" or "click" when
-contacting the end of the rail. Note the found value as
-<em>minimum_sensitivity</em>.</p>
-<h4 id="update-printercfg-with-sensitivity-value">Update printer.cfg with sensitivity value<a class="headerlink" href="#update-printercfg-with-sensitivity-value" title="Permanent link">&para;</a></h4>
-<p>After finding <em>maximum_sensitivity</em> and <em>minimum_sensitivity</em>, use a
-calculator to obtain the recommend sensitivity as
-<em>minimum_sensitivity + (maximum_sensitivity - minimum_sensitivity)/3</em>.
-The recommended sensitivity should be in the range between the minimum
-and maximum, but slightly closer to the minimum. Round the final value
-to the nearest integer value.</p>
-<p>For tmc2209 set this in the config as <code>driver_SGTHRS</code>, for other TMC
-drivers set this in the config as <code>driver_SGT</code>.</p>
-<p>If the range between <em>maximum_sensitivity</em> and <em>minimum_sensitivity</em>
-is small (eg, less than 5) then it may result in unstable homing. A
-faster homing speed may increase the range and make the operation more
-stable.</p>
-<p>Note that if any change is made to driver current, homing speed, or a
-notable change is made to the printer hardware, then it will be
-necessary to run the tuning process again.</p>
-<h4 id="using-macros-when-homing">Using Macros when Homing<a class="headerlink" href="#using-macros-when-homing" title="Permanent link">&para;</a></h4>
-<p>Unlike Klipper, in Kalico, you do not need macros for
-sensorless homing management. Homing current is handled by the TMC block,
-homing retract distance is used to define a minimum homing distance
-(which can also be manually configured) which is used for sensorless
-homing verification as well as post home retract. In depth guide
-for sensorless setup coming soon.</p>
-<h3 id="tips-for-sensorless-homing-on-corexy">Tips for sensorless homing on CoreXY<a class="headerlink" href="#tips-for-sensorless-homing-on-corexy" title="Permanent link">&para;</a></h3>
-<p>It is possible to use sensorless homing on the X and Y carriages of a
-CoreXY printer. Kalico uses the <code>[stepper_x]</code> stepper to detect
-stalls when homing the X carriage and uses the <code>[stepper_y]</code> stepper
-to detect stalls when homing the Y carriage.</p>
-<p>Use the tuning guide described above to find the appropriate "stall
-sensitivity" for each carriage, but be aware of the following
-restrictions:</p>
-<ol>
-<li>When using sensorless homing on CoreXY, make sure there is no
-   <code>hold_current</code> configured for either stepper.</li>
-<li>While tuning, make sure both the X and Y carriages are near the
-   center of their rails before each home attempt.</li>
-<li>After tuning is complete, when homing both X and Y, use macros to
-   ensure that one axis is homed first, then move that carriage away
-   from the axis limit, pause for at least 2 seconds, and then start
-   the homing of the other carriage. The move away from the axis
-   avoids homing one axis while the other is pressed against the axis
-   limit (which may skew the stall detection). The pause is necessary
-   to ensure the driver's stall flag is cleared prior to homing again.</li>
-</ol>
-<p>An example CoreXY homing macro might look like:</p>
-<div class="highlight"><pre><span></span><code>[gcode_macro HOME]
-gcode:
-    G90
-    # Home Z
-    G28 Z0
-    G1 Z10 F1200
-    # Home Y
-    G28 Y0
-    G1 Y5 F1200
-    # Home X
-    G4 P2000
-    G28 X0
-    G1 X5 F1200
-</code></pre></div>
-
-<h2 id="querying-and-diagnosing-driver-settings">Querying and diagnosing driver settings<a class="headerlink" href="#querying-and-diagnosing-driver-settings" title="Permanent link">&para;</a></h2>
-<p>The `<a href="G-Codes.html#dump_tmc">DUMP_TMC command</a> is a useful tool when
-configuring and diagnosing the drivers. It will report all fields
-configured by Kalico as well as all fields that can be queried from
-the driver.</p>
-<p>All of the reported fields are defined in the Trinamic datasheet for
-each driver. These datasheets can be found on the
-<a href="https://www.trinamic.com/">Trinamic website</a>. Obtain and review the
-Trinamic datasheet for the driver to interpret the results of
-DUMP_TMC.</p>
-<h2 id="configuring-driver_xxx-settings">Configuring driver_XXX settings<a class="headerlink" href="#configuring-driver_xxx-settings" title="Permanent link">&para;</a></h2>
-<p>Kalico supports configuring many low-level driver fields using
-<code>driver_XXX</code> settings. The
-<a href="Config_Reference.html#tmc-stepper-driver-configuration">TMC driver config reference</a>
-has the full list of fields available for each type of driver.</p>
-<p>In addition, almost all fields can be modified at run-time using the
-<a href="G-Codes.html#set_tmc_field">SET_TMC_FIELD command</a>.</p>
-<p>Each of these fields is defined in the Trinamic datasheet for each
-driver. These datasheets can be found on the
-<a href="https://www.trinamic.com/">Trinamic website</a>.</p>
-<p>Note that the Trinamic datasheets sometime use wording that can
-confuse a high-level setting (such as "hysteresis end") with a
-low-level field value (eg, "HEND"). In Kalico, <code>driver_XXX</code> and
-SET_TMC_FIELD always set the low-level field value that is actually
-written to the driver. So, for example, if the Trinamic datasheet
-states that a value of 3 must be written to the HEND field to obtain a
-"hysteresis end" of 0, then set <code>driver_HEND=3</code> to obtain the
-high-level value of 0.</p>
-<h2 id="common-questions">Common Questions<a class="headerlink" href="#common-questions" title="Permanent link">&para;</a></h2>
-<h3 id="can-i-use-stealthchop-mode-on-an-extruder-with-pressure-advance">Can I use stealthChop mode on an extruder with pressure advance?<a class="headerlink" href="#can-i-use-stealthchop-mode-on-an-extruder-with-pressure-advance" title="Permanent link">&para;</a></h3>
-<p>Many people successfully use "stealthChop" mode with Kalico's
-pressure advance. Kalico implements
-<a href="Kinematics.html#pressure-advance">smooth pressure advance</a> which does
-not introduce any instantaneous velocity changes.</p>
-<p>However, "stealthChop" mode may produce lower motor torque and/or
-produce higher motor heat. It may or may not be an adequate mode for
-your particular printer.</p>
-<h3 id="i-keep-getting-unable-to-read-tmc-uart-stepper_x-register-ifcnt-errors">I keep getting "Unable to read tmc uart 'stepper_x' register IFCNT" errors?<a class="headerlink" href="#i-keep-getting-unable-to-read-tmc-uart-stepper_x-register-ifcnt-errors" title="Permanent link">&para;</a></h3>
-<p>This occurs when Kalico is unable to communicate with a tmc2208 or
-tmc2209 driver.</p>
-<p>Make sure that the motor power is enabled, as the stepper motor driver
-generally needs motor power before it can communicate with the
-micro-controller.</p>
-<p>If this error occurs after flashing Kalico for the first time, then
-the stepper driver may have been previously programmed in a state that
-is not compatible with Kalico. To reset the state, remove all power
-from the printer for several seconds (physically unplug both USB and
-power plugs).</p>
-<p>Otherwise, this error is typically the result of incorrect UART pin
-wiring or an incorrect Kalico configuration of the UART pin settings.</p>
-<h3 id="i-keep-getting-unable-to-write-tmc-spi-stepper_x-register-errors">I keep getting "Unable to write tmc spi 'stepper_x' register ..." errors?<a class="headerlink" href="#i-keep-getting-unable-to-write-tmc-spi-stepper_x-register-errors" title="Permanent link">&para;</a></h3>
-<p>This occurs when Kalico is unable to communicate with a tmc2130, tmc5160 or
-tmc2160 driver.</p>
-<p>Make sure that the motor power is enabled, as the stepper motor driver
-generally needs motor power before it can communicate with the
-micro-controller.</p>
-<p>Otherwise, this error is typically the result of incorrect SPI wiring,
-an incorrect Kalico configuration of the SPI settings, or an
-incomplete configuration of devices on an SPI bus.</p>
-<p>Note that if the driver is on a shared SPI bus with multiple devices
-then be sure to fully configure every device on that shared SPI bus in
-Kalico. If a device on a shared SPI bus is not configured, then it
-may incorrectly respond to commands not intended for it and corrupt
-the communication to the intended device. If there is a device on a
-shared SPI bus that can not be configured in Kalico, then use a
-<a href="Config_Reference.html#static_digital_output">static_digital_output config section</a>
-to set the CS pin of the unused device high (so that it will not
-attempt to use the SPI bus). The board's schematic is often a useful
-reference for finding which devices are on an SPI bus and their
-associated pins.</p>
-<h3 id="why-did-i-get-a-tmc-reports-error-error">Why did I get a "TMC reports error: ..." error?<a class="headerlink" href="#why-did-i-get-a-tmc-reports-error-error" title="Permanent link">&para;</a></h3>
-<p>This type of error indicates the TMC driver detected a problem and has
-disabled itself. That is, the driver stopped holding its position and
-ignored movement commands. If Kalico detects that an active driver
-has disabled itself, it will transition the printer into a "shutdown"
-state.</p>
-<p>It's also possible that a <strong>TMC reports error</strong> shutdown occurs due to
-SPI errors that prevent communication with the driver (on tmc2130,
-tmc5160, tmc2160, or tmc2660). If this occurs, it's common for the reported
-driver status to show <code>00000000</code> or <code>ffffffff</code> - for example: <code>TMC
-reports error: DRV_STATUS: ffffffff ...</code> OR <code>TMC reports error:
-READRSP@RDSEL2: 00000000 ...</code>. Such a failure may be due to an SPI
-wiring problem or may be due to a self-reset or failure of the TMC
-driver.</p>
-<p>Some common errors and tips for diagnosing them:</p>
-<h4 id="tmc-reports-error-ot1overtemperror">TMC reports error: <code>... ot=1(OvertempError!)</code><a class="headerlink" href="#tmc-reports-error-ot1overtemperror" title="Permanent link">&para;</a></h4>
-<p>This indicates the motor driver disabled itself because it became too
-hot. Typical solutions are to decrease the stepper motor current,
-increase cooling on the stepper motor driver, and/or increase cooling
-on the stepper motor.</p>
-<h4 id="tmc-reports-error-shorttognd-or-shorttosupply">TMC reports error: <code>... ShortToGND</code> OR <code>ShortToSupply</code><a class="headerlink" href="#tmc-reports-error-shorttognd-or-shorttosupply" title="Permanent link">&para;</a></h4>
-<p>This indicates the driver has disabled itself because it detected very
-high current passing through the driver. This may indicate a loose or
-shorted wire to the stepper motor or within the stepper motor itself.</p>
-<p>This error may also occur if using stealthChop mode and the TMC driver
-is not able to accurately predict the mechanical load of the motor.
-(If the driver makes a poor prediction then it may send too much
-current through the motor and trigger its own over-current detection.)
-To test this, disable stealthChop mode and check if the errors
-continue to occur.</p>
-<h4 id="tmc-reports-error-reset1reset-or-cs_actual0reset-or-se0reset">TMC reports error: <code>... reset=1(Reset)</code> OR <code>CS_ACTUAL=0(Reset?)</code> OR <code>SE=0(Reset?)</code><a class="headerlink" href="#tmc-reports-error-reset1reset-or-cs_actual0reset-or-se0reset" title="Permanent link">&para;</a></h4>
-<p>This indicates that the driver has reset itself mid-print. This may be
-due to voltage or wiring issues.</p>
-<h4 id="tmc-reports-error-uv_cp1undervoltage">TMC reports error: <code>... uv_cp=1(Undervoltage!)</code><a class="headerlink" href="#tmc-reports-error-uv_cp1undervoltage" title="Permanent link">&para;</a></h4>
-<p>This indicates the driver has detected a low-voltage event and has
-disabled itself. This may be due to wiring or power supply issues.</p>
-<h3 id="how-do-i-tune-spreadcyclecoolstepetc-mode-on-my-drivers">How do I tune spreadCycle/coolStep/etc. mode on my drivers?<a class="headerlink" href="#how-do-i-tune-spreadcyclecoolstepetc-mode-on-my-drivers" title="Permanent link">&para;</a></h3>
-<p>The <a href="https://www.trinamic.com/">Trinamic website</a> has guides on
-configuring the drivers. These guides are often technical, low-level,
-and may require specialized hardware. Regardless, they are the best
-source of information.</p>
+<ul>
+<li><a href="Config_Reference.html#tmc-stepper-driver-configuration"><code>[tmcXXXX] home_current</code></a> automatically sets a different current for homing</li>
+<li><a href="Config_Reference.html#tmc-stepper-driver-configuration"><code>[tmcXXXX] current_change_dwell_time</code></a> will add a delay before homing</li>
+<li><a href="Config_Reference.html#stepper"><code>[stepper_X] homing_retract_dist, homing_retract_speed</code></a> add a short retraction and a second homing for better accuracy</li>
+<li><a href="Config_Reference.html#stepper"><code>[stepper_X] min_home_dist</code></a> will move away from the endstop before homing</li>
+</ul>
+<h2 id="probes-and-probing">Probes and Probing<a class="headerlink" href="#probes-and-probing" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="Config_Reference.html#probe"><code>[probe] drop_first_result: True</code></a> will drop the first result when probing. This can improve probe accuracy for printers that have an outlier for the first sample.</li>
+<li><a href="Config_Reference.html#dockable_probe"><code>[dockable_probe]</code></a> brings helpful native support for docked probes, such as the Annex Quickdraw, Klicky/Unklicky, and countless others.</li>
+<li><a href="Config_Reference.html#z_calibration"><code>[z_calibration]</code></a> enables automatic probe Z offset calibration using a reference endstop like the Voron 2.4 nozzle endstop.</li>
+<li><a href="Config_Reference.html#z_tilt_ng"><code>[z_tilt_ng]</code></a> adds enforced 3-point z tilt calibration</li>
+<li><a href="Config_Reference.html#z_tilt"><code>[z_tilt/quad_gantry_level] increasing_threshold</code></a> allows you to customize the allowed variation when probing multiple times</li>
+<li><a href="Config_Reference.html#z_tilt"><code>[z_tilt/quad_gantry_level] adaptive_horizontal_move_z</code></a> adaptively decrease horizontal_move_z based on resulting error - z_tilt and QGL faster and safer!</li>
+<li><a href="Config_Reference.html#safe_z_home"><code>[safe_z_home] home_y_before_x</code></a> let you home Y before X.</li>
+<li><a href="Config_Reference.html#z_tilt"><code>[z_tilt/quad_gantry_level/etc] use_probe_xy_offsets</code></a> let you decide if the `[probe] XY offsets should be applied to probe positions.</li>
+</ul>
+<h2 id="heaters-fans-and-pid-changes">Heaters, Fans, and PID changes<a class="headerlink" href="#heaters-fans-and-pid-changes" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="MPC.html">Model Predictive Control</a> is an advanced temperature control method that offers an alternative to traditional PID control.</li>
+<li><a href="PID.html">Velocity PID</a> can be more accurate than positional PID, but is more susceptible to noisy sensors and may require larger smoothing times</li>
+<li><a href="G-Codes.html#pid_profile"><code>PID_PROFILE [LOAD/SAVE]</code></a> allows you to calibrate and save PID profiles at multiple temperatures and fan speeds, and later restore them. With some clever macros, automatic per-material pid tuning is within reach!</li>
+<li><a href="G-Codes.html#set_heater_pid"><code>SET_HEATER_PID HEATER= KP= KI= KD=</code></a> can update your PID parameters without a reload.</li>
+<li><a href="G-Codes.html#heater_interrupt"><code>HEATER_INTERRUPT</code></a> will interrupt a <code>TEMPERATURE_WAIT</code>.</li>
+<li>ADC out of range errors now include which heater, and additional information to assist in troubleshooting</li>
+</ul>
+<ul>
+<li><a href="Config_Reference.html#temperature_fan"><code>[temperature_fan] control: curve</code></a> lets you set a fan curve instead of linear control</li>
+<li><a href="Config_Reference.html#temperature_fan"><code>[temperature_fan] reverse: True</code></a> will let you control a fan in reverse to temperature control. The lower the temperature, the higher the fan runs.</li>
+<li>Fans now normalize PWM power within <code>off_below</code> and <code>max_power</code>, so setting a fan to 10% will get you 10% fan speed within your configured off/max range.</li>
+</ul>
+<h2 id="macros">Macros<a class="headerlink" href="#macros" title="Permanent link">&para;</a></h2>
+<ul>
+<li>The jinja <code>do</code> extension has been enabled. You can now call functions in your macros without resorting to dirty hacks: <code>{% do array.append(5) %}</code></li>
+<li>The python <a href="https://docs.python.org/3/library/math.html"><code>math</code></a> library is available to macros. <code>{math.sin(math.pi * variable)}</code> and more!</li>
+<li>New <a href="G-Codes.html#reload_gcode_macros"><code>RELOAD_GCODE_MACROS</code></a> G-Code command to reload <code>[gcode_macro]</code> templates without requiring a restart.</li>
+<li>G-Code Macros can be written in Python. Read more <a href="Command_Templates.html">here</a></li>
+</ul>
+<h2 id="plugins">Plugins<a class="headerlink" href="#plugins" title="Permanent link">&para;</a></h2>
+<p>Extend your Kalico installation with custom plugins.</p>
+<p>Your python plugins can now extend <a href="https://github.com/KalicoCrew/kalico/tree/main/klippy/extras"><code>klippy/extras</code></a> adding new modules to Kalico without causing updates to fail due to a "dirty" git tree.</p>
+<p>Enable <code>[danger_options] allow_plugin_override: True</code> to override existing extras.</p>
 
 
 

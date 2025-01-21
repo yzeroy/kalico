@@ -111,11 +111,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.kalico.gg/Danger_Features.html</loc>
-         <lastmod>2025-01-21</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://docs.kalico.gg/Debugging.html</loc>
          <lastmod>2025-01-21</lastmod>
          <changefreq>daily</changefreq>
@@ -172,6 +167,11 @@
     </url>
     <url>
          <loc>https://docs.kalico.gg/Installation.html</loc>
+         <lastmod>2025-01-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.kalico.gg/Kalico_Additions.html</loc>
          <lastmod>2025-01-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
