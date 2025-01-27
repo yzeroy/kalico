@@ -3,9 +3,13 @@
 # Copyright (C) 2018-2021  Kevin O'Connor <kevin@koconnor.net>
 #
 # This file may be distributed under the terms of the GNU GPLv3 license.
-import traceback, logging, ast, copy, json, threading
+from __future__ import annotations
+
+import traceback, logging, ast, json, threading
 import jinja2, math
 from klippy import configfile
+from klippy.extras.danger_options import get_danger_options
+
 
 PYTHON_SCRIPT_PREFIX = "!"
 
@@ -15,41 +19,9 @@ PYTHON_SCRIPT_PREFIX = "!"
 
 
 # Wrapper for access to printer object get_status() methods
-class GetStatusWrapperJinja:
-    def __init__(self, printer, eventtime=None):
-        self.printer = printer
-        self.eventtime = eventtime
-        self.cache = {}
-
-    def __getitem__(self, val):
-        sval = str(val).strip()
-        if sval in self.cache:
-            return self.cache[sval]
-        po = self.printer.lookup_object(sval, None)
-        if po is None or not hasattr(po, "get_status"):
-            raise KeyError(val)
-        if self.eventtime is None:
-            self.eventtime = self.printer.get_reactor().monotonic()
-        self.cache[sval] = res = copy.deepcopy(po.get_status(self.eventtime))
-        return res
-
-    def __contains__(self, val):
-        try:
-            self.__getitem__(val)
-        except KeyError as e:
-            return False
-        return True
-
-    def __iter__(self):
-        for name, obj in self.printer.lookup_objects():
-            if self.__contains__(name):
-                yield name
-
-
-class GetStatusWrapperPython:
+class GetStatusWrapper:
     def __init__(self, printer):
         self.printer = printer
-        self.cache = {}
 
     def __getitem__(self, val):
         sval = str(val).strip()
@@ -59,13 +31,10 @@ class GetStatusWrapperPython:
         eventtime = self.printer.get_reactor().monotonic()
         return po.get_status(eventtime)
 
-    def __getattr__(self, val):
-        return self.__getitem__(val)
-
     def __contains__(self, val):
         try:
             self.__getitem__(val)
-        except KeyError as e:
+        except KeyError:
             return False
         return True
 
@@ -73,6 +42,11 @@ class GetStatusWrapperPython:
         for name, obj in self.printer.lookup_objects():
             if self.__contains__(name):
                 yield name
+
+
+class GetStatusWrapperPython(GetStatusWrapper):
+    def __getattr__(self, val):
+        return self.__getitem__(val)
 
 
 # Wrapper around a Jinja2 template
@@ -95,10 +69,21 @@ class TemplateWrapperJinja:
             raise printer.config_error(msg)
 
     def render(self, context=None):
+        return "".join(self.stream(context))
+
+    def stream(self, context=None):
         if context is None:
             context = self.create_template_context()
         try:
-            return str(self.template.render(context))
+            buffer = ""
+            for chunk in self.template.stream(context):
+                buffer += chunk
+                if "\n" in buffer:
+                    stmt, buffer = buffer.rsplit("\n", maxsplit=1)
+                    if stmt.strip():
+                        yield stmt
+            if buffer.strip():
+                yield buffer
         except Exception as e:
             msg = "Error evaluating '%s': %s" % (
                 self.name,
@@ -108,7 +93,11 @@ class TemplateWrapperJinja:
             raise self.gcode.error(msg)
 
     def run_gcode_from_command(self, context=None):
-        self.gcode.run_script_from_command(self.render(context))
+        if get_danger_options().template_streaming:
+            for line in self.stream(context):
+                self.gcode.run_script_from_command(line)
+        else:
+            self.gcode.run_script_from_command(self.render(context))
 
 
 class TemplateWrapperPython:
@@ -340,7 +329,7 @@ class PrinterGCodeMacro:
 
     def create_template_context(self, eventtime=None):
         return {
-            "printer": GetStatusWrapperJinja(self.printer, eventtime),
+            "printer": GetStatusWrapper(self.printer),
             "action_emergency_stop": self._action_emergency_stop,
             "action_respond_info": self._action_respond_info,
             "action_log": self._action_log,

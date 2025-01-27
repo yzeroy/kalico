@@ -57,6 +57,8 @@ class DangerOptions:
             "endstop_sample_count", 4, minval=1
         )
 
+        self.template_streaming = config.getboolean("template_streaming", False)
+
         if self.minimal_logging:
             self.log_statistics = False
             self.log_config_file_at_startup = False

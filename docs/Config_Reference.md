@@ -120,6 +120,9 @@ A collection of Kalico-specific system options
 #endstop_sample_count: 4
 #   How many times we should check the endstop state when homing
 #   Unless your endstop is noisy and unreliable, you should be able to lower this to 1
+#template_streaming: False
+#   Enable experimental template streaming. This changes macros to execute in chunks
+#   allowing for live status updates during execution.
 
 
 # Logging options:

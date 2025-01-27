@@ -163,6 +163,14 @@ result in subtle behavior when a macro generates commands that call
 other macros, as the called macro is evaluated when it is invoked
 (which is after the entire evaluation of the calling macro).
 
+⚠️ When `[danger_option] template_streaming: True` is set, Macros will
+be evaluated step by step. Printer status changes *will* be visible during
+execution. However because movements are queued during execution, positions
+may not be what you expect, as the next macro statement may be evaluated
+before the movement is completed. G-Codes that pause execution (`M400`,
+`M190`, `TEMPERATURE_WAIT`, etc) will complete before the next template
+statement is evaluated.
+
 By convention, the name immediately following `printer` is the name of
 a config section. So, for example, `printer.fan` refers to the fan
 object created by the `[fan]` config section. There are some
