@@ -710,6 +710,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#pid_profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      [pid_profile]
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3902,6 +3911,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#pid_profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      [pid_profile]
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6438,6 +6456,34 @@ max_temp:
 #   See the &quot;extruder&quot; section for a description of the above parameters.
 </code></pre></div>
 
+<h3 id="pid_profile">[pid_profile]<a class="headerlink" href="#pid_profile" title="Permanent link">&para;</a></h3>
+<p>Pid Profiles specify a set of PID values that can be loaded at runtime.</p>
+<div class="highlight"><pre><span></span><code>[pid_profile &lt;heater&gt; &lt;profile-name&gt;]
+pid_version: 1
+# This defines the version it was saved with and is important for compatibility
+# checks, leave it at 1!
+pid_target:
+# For reference only, specifies the temperature the profile was calibrated for.
+# If you create a custom profile, either enter the temperature that profile is
+# intended to be used at or leave it blank.
+pid_tolerance: 
+# The tolerance that was used when autocalibrating the profile. If you define
+# a custom profile, leave it empty.
+control: &lt;pid|pid_v&gt;
+# Has to be either pid or pid_v.
+# This parameter is required.
+pid_kp: 
+# The P value for the PID Control.
+# This parameter is required.
+pid_ki:
+# The I value for the PID Control.
+# This parameter is required.
+pid_kd: 
+# The D value for the PID Control.
+# This parameter is required.
+</code></pre></div>
+
+<p>For more information, read up on docs/PID.md</p>
 <h2 id="bed-level-support">Bed level support<a class="headerlink" href="#bed-level-support" title="Permanent link">&para;</a></h2>
 <h3 id="bed_mesh">[bed_mesh]<a class="headerlink" href="#bed_mesh" title="Permanent link">&para;</a></h3>
 <p>Mesh Bed Leveling. One may define a bed_mesh config section to enable
