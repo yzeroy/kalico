@@ -4,6 +4,7 @@
 #
 # This file may be distributed under the terms of the GNU GPLv3 license.
 from klippy import stepper
+import logging
 
 
 class CoreXYKinematics:
@@ -114,6 +115,10 @@ class CoreXYKinematics:
             "axis_minimum": self.axes_min,
             "axis_maximum": self.axes_max,
         }
+
+    def set_axis_limits(self, axis, new_limit):
+        logging.info(f"setting axis limits, axis: {axis}, limits: {new_limit}")
+        self.limits[axis] = new_limit
 
 
 def load_kinematics(toolhead, config):
