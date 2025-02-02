@@ -171,24 +171,40 @@ class FanTachometer:
 
 class PrinterFan:
     def __init__(self, config):
+        self.printer = config.get_printer()
         self.fan = Fan(config)
-        # Register commands
-        gcode = config.get_printer().lookup_object("gcode")
-        gcode.register_command("M106", self.cmd_M106)
-        gcode.register_command("M107", self.cmd_M107)
+        self.name = config.get_name().split()[-1]
+
+        if self.name == "fan":
+            gcode = config.get_printer().lookup_object("gcode")
+            gcode.register_command("M106", self.cmd_M106)
+            gcode.register_command("M107", self.cmd_M107)
 
     def get_status(self, eventtime):
         return self.fan.get_status(eventtime)
 
+    def get_name(self):
+        return self.name
+
+    def get_all_fans(self):
+        return self.printer.lookup_objects("fan")
+
+    def set_fans_speed(self, value):
+        for _, fan_obj in self.get_all_fans():
+            fan_obj.fan.set_speed_from_command(value)
+        return
+
     def cmd_M106(self, gcmd):
-        # Set fan speed
         value = gcmd.get_float("S", 255.0, minval=0.0) / 255.0
-        self.fan.set_speed_from_command(value)
+        self.set_fans_speed(value)
 
     def cmd_M107(self, gcmd):
-        # Turn fan off
-        self.fan.set_speed_from_command(0.0)
+        self.set_fans_speed(0.0)
 
 
 def load_config(config):
+    return PrinterFan(config)
+
+
+def load_config_prefix(config):
     return PrinterFan(config)
