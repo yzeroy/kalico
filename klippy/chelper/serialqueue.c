@@ -39,7 +39,8 @@ struct command_queue {
 struct serialqueue {
     // Input reading
     struct pollreactor *pr;
-    int serial_fd, serial_fd_type, client_id;
+    int serial_fd, serial_fd_type;
+    uint32_t client_id;
     int pipe_fds[2];
     uint8_t input_buf[4096];
     uint8_t need_sync;
@@ -598,7 +599,7 @@ command_event(struct serialqueue *sq, double eventtime)
     double waketime;
     for (;;) {
         waketime = check_send_command(sq, buflen, eventtime);
-        if (waketime != PR_NOW || buflen + MESSAGE_MAX > sizeof(buf)) {
+        if (waketime != PR_NOW || buflen + MESSAGE_MAX > (int)sizeof(buf)) {
             if (buflen) {
                 // Write message blocks
                 do_write(sq, buf, buflen);

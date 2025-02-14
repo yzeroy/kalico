@@ -41,7 +41,7 @@ shift_pulses(struct shaper_pulses *sp)
 static int
 init_shaper(int n, double a[], double t[], struct shaper_pulses *sp)
 {
-    if (n < 0 || n > ARRAY_SIZE(sp->pulses)) {
+    if (n < 0 || n > (int)ARRAY_SIZE(sp->pulses)) {
         sp->num_pulses = 0;
         return -1;
     }

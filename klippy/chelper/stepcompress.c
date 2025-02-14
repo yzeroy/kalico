@@ -213,7 +213,8 @@ check_line(struct stepcompress *sc, struct step_move move)
                , sc->oid, move.interval, move.count, move.add);
         return ERROR_RET;
     }
-    uint32_t interval = move.interval, p = 0;
+    uint32_t interval = move.interval;
+    int32_t p = 0;
     uint16_t i;
     for (i=0; i<move.count; i++) {
         struct points point = minmax_point(sc, sc->queue_pos + i);
@@ -266,7 +267,7 @@ stepcompress_fill(struct stepcompress *sc, uint32_t max_error
 
 // Set the inverted stepper direction flag
 void __visible
-stepcompress_set_invert_sdir(struct stepcompress *sc, uint32_t invert_sdir)
+stepcompress_set_invert_sdir(struct stepcompress *sc, int invert_sdir)
 {
     invert_sdir = !!invert_sdir;
     if (invert_sdir != sc->invert_sdir) {
