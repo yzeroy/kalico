@@ -44,7 +44,7 @@ def _merge_unioned_dicts(union_t):
 
     args = set(typing.get_args(union_t))
     dict_args = set(arg for arg in args if typing.get_origin(arg) is dict)
-    if not dict_args:
+    if len(dict_args) <= 1:
         return union_t
 
     key_types = set()

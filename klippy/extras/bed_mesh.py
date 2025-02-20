@@ -6,6 +6,7 @@
 import logging, math, json, collections
 from . import probe
 from .danger_options import get_danger_options
+import typing
 
 PROFILE_VERSION = 1
 PROFILE_OPTIONS = {
@@ -20,6 +21,33 @@ PROFILE_OPTIONS = {
     "algo": str,
     "tension": float,
 }
+
+
+BedMeshProfileParams = typing.TypedDict("BedMeshProfileParams", PROFILE_OPTIONS)
+BedMeshProfile = typing.TypedDict(
+    "BedMeshProfile",
+    {
+        "mesh_params": BedMeshProfileParams,
+        "points": tuple[tuple[float, ...], ...],
+    },
+)
+BedMeshStatus = typing.TypedDict(
+    "BedMeshStatus",
+    {
+        "profile_name": str,
+        "mesh_min": tuple[float, float],
+        "mesh_max": tuple[float, float],
+        "probed_matrix": list[list],
+        "mesh_matrix": list[list],
+        "profiles": dict[
+            str,
+            dict[
+                str,
+                tuple[tuple[float, ...], ...] | dict[str, float | int | str],
+            ],
+        ],
+    },
+)
 
 
 class BedMeshError(Exception):
@@ -278,7 +306,7 @@ class BedMesh:
                     )
         self.last_position[:] = newpos
 
-    def get_status(self, eventtime=None):
+    def get_status(self, eventtime=None) -> BedMeshStatus:
         return self.status
 
     def update_status(self):
