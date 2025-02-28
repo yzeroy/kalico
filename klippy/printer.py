@@ -5,6 +5,7 @@
 # This file may be distributed under the terms of the GNU GPLv3 license.
 
 import sys, os, gc, optparse, logging, time, collections, importlib, importlib.util
+import multiprocessing
 
 from . import compat
 from . import util, reactor, queuelogger, msgproto
@@ -574,6 +575,11 @@ def main():
         )
 
     compat.install()
+
+    # Python 3.14 will change the default start method to `forkserver`
+    # which improves thread safety. But this also breaks passing
+    # unpickleable functions, which we use in mathutil
+    multiprocessing.set_start_method("fork")
 
     gc.disable()
 
