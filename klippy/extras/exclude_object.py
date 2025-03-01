@@ -7,6 +7,19 @@
 
 import logging
 import json
+import typing
+
+
+class PrintObject(typing.TypedDict):
+    name: str
+    center: typing.Optional[tuple[float, float]]
+    polygon: typing.Optional[list[tuple[float, float]]]
+
+
+class Status(typing.TypedDict):
+    objects: list[PrintObject]
+    excluded_objects: list[str]
+    current_object: typing.Optional[str]
 
 
 class ExcludeObject:
@@ -200,7 +213,7 @@ class ExcludeObject:
             and self.initial_extrusion_moves == 0
         )
 
-    def get_status(self, eventtime=None):
+    def get_status(self, eventtime=None) -> Status:
         status = {
             "objects": self.objects,
             "excluded_objects": self.excluded_objects,

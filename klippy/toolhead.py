@@ -7,6 +7,24 @@ import math, logging, importlib
 from . import chelper
 from .kinematics import extruder
 from .extras.danger_options import get_danger_options
+from .gcode import Coord
+import typing
+
+
+class ToolHeadStatus(typing.TypedDict):
+    homed_axes: typing.Annotated[str, typing.Literal["x", "y", "z"]]
+    axes_min: Coord
+    axes_max: Coord
+    print_time: float
+    stalls: int
+    estimated_print_time: float
+    extruder: str
+    position: Coord
+    max_velocity: float
+    max_accel: float
+    minimum_cruise_ratio: float
+    square_corner_velocity: float
+
 
 # Common suffixes: _d is distance (in mm), _v is velocity (in
 #   mm/second), _v2 is velocity squared (mm^2/s^2), _t is time (in
@@ -722,7 +740,7 @@ class ToolHead:
         lookahead_empty = not self.lookahead.queue
         return self.print_time, est_print_time, lookahead_empty
 
-    def get_status(self, eventtime):
+    def get_status(self, eventtime) -> ToolHeadStatus:
         print_time = self.print_time
         estimated_print_time = self.mcu.estimated_print_time(eventtime)
         res = dict(self.kin.get_status(eventtime))

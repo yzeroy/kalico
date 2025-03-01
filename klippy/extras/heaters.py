@@ -7,8 +7,10 @@ import collections
 import os
 import logging
 import threading
+import typing
 from .control_mpc import (
     ControlMPC,
+    ControlMPCStatus,
     FILAMENT_TEMP_SRC_AMBIENT,
     FILAMENT_TEMP_SRC_FIXED,
     FILAMENT_TEMP_SRC_SENSOR,
@@ -34,6 +36,23 @@ PID_PROFILE_OPTIONS = {
     "pid_ki": (float, "%.3f"),
     "pid_kd": (float, "%.3f"),
 }
+
+
+class PrinterHeatersStatus(typing.TypedDict):
+    available_heaters: list[str]
+    available_sensors: list[str]
+    available_monitors: list[str]
+
+
+class BaseHeaterStatus(typing.TypedDict):
+    temperature: float
+    target: float
+    power: float
+    pid_profile: str
+
+
+class HeaterStatus(typing.TypedDict, total=False):
+    control_stats: ControlMPCStatus
 
 
 class Heater:
@@ -247,7 +266,7 @@ class Heater:
             last_pwm_value,
         )
 
-    def get_status(self, eventtime):
+    def get_status(self, eventtime) -> HeaterStatus:
         control_stats = None
         with self.lock:
             target_temp = self.target_temp
@@ -1054,7 +1073,7 @@ class PrinterHeaters:
     def register_monitor(self, config):
         self.available_monitors.append(config.get_name())
 
-    def get_status(self, eventtime):
+    def get_status(self, eventtime) -> PrinterHeatersStatus:
         return {
             "available_heaters": self.available_heaters,
             "available_sensors": self.available_sensors,

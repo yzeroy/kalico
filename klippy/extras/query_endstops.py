@@ -4,6 +4,12 @@
 #
 # This file may be distributed under the terms of the GNU GPLv3 license.
 
+import typing
+
+
+class QueryEndstopsStatus(typing.TypedDict):
+    last_query: dict[typing.Annotated[str, "Endstop Name"], bool]
+
 
 class QueryEndstops:
     def __init__(self, config):
@@ -26,7 +32,7 @@ class QueryEndstops:
     def register_endstop(self, mcu_endstop, name):
         self.endstops.append((mcu_endstop, name))
 
-    def get_status(self, eventtime):
+    def get_status(self, eventtime) -> QueryEndstopsStatus:
         return {"last_query": {name: value for name, value in self.last_state}}
 
     def _handle_web_request(self, web_request):

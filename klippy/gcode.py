@@ -5,13 +5,26 @@
 # This file may be distributed under the terms of the GNU GPLv3 license.
 import os, re, logging, collections, shlex
 from . import mathutil
+import typing
+
+
+class GCodeDispatchStatusCommand(typing.TypedDict, total=False):
+    help: str
+
+
+class GCodeDispatchStatus(typing.TypedDict):
+    commands: dict[str, GCodeDispatchStatusCommand]
 
 
 class CommandError(Exception):
     pass
 
 
-Coord = collections.namedtuple("Coord", ("x", "y", "z", "e"))
+class Coord(typing.NamedTuple):
+    x: float
+    y: float
+    z: float
+    e: float
 
 
 class GCodeCommand:
@@ -252,7 +265,7 @@ class GCodeDispatch:
     def get_command_help(self):
         return dict(self.gcode_help)
 
-    def get_status(self, eventtime):
+    def get_status(self, eventtime) -> GCodeDispatchStatus:
         return {"commands": self.status_commands}
 
     def _build_status_commands(self):

@@ -447,7 +447,9 @@ class GCodeMacro:
         self.gcode.register_command(self.rename_existing, prev_cmd, desc=pdesc)
         self.gcode.register_command(self.alias, self.cmd, desc=self.cmd_desc)
 
-    def get_status(self, eventtime):
+    def get_status(
+        self, eventtime
+    ) -> typing.Annotated[dict[str, typing.Any], "Macro Variables"]:
         return self.variables
 
     cmd_SET_GCODE_VARIABLE_help = "Set the value of a G-Code macro variable"

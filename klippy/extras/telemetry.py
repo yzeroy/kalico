@@ -15,6 +15,12 @@ import threading
 import urllib.request
 import uuid
 
+import typing
+
+
+class Status(typing.TypedDict):
+    enabled: typing.Optional[bool]
+
 
 class KalicoTelementry:
     TELEMETRY_ENDPOINT = "https://telemetry.kalico.gg/collect"
@@ -96,7 +102,7 @@ class KalicoTelementry:
             "file with this setting and restart the printer."
         )
 
-    def get_status(self, eventtime=None):
+    def get_status(self, eventtime=None) -> Status:
         return {"enabled": self.enabled}
 
     def _handle_ready(self):

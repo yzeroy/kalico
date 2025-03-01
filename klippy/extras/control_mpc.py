@@ -1,5 +1,6 @@
 import math
 import logging
+import typing
 
 AMBIENT_TEMP = 25.0
 PIN_MIN_TIME = 0.100
@@ -7,6 +8,19 @@ PIN_MIN_TIME = 0.100
 FILAMENT_TEMP_SRC_AMBIENT = "ambient"
 FILAMENT_TEMP_SRC_FIXED = "fixed"
 FILAMENT_TEMP_SRC_SENSOR = "sensor"
+
+
+class ControlMPCStatus(typing.TypedDict):
+    temp_block: float
+    temp_sensor: float
+    temp_ambient: float
+    power: float
+    loss_ambient: float
+    loss_filament: float
+    filament_temp: typing.Union[
+        tuple[typing.Literal["sensor", "ambient"]],
+        tuple[typing.Literal["sensor"], float],
+    ]
 
 
 class ControlMPC:
@@ -353,7 +367,7 @@ class ControlMPC:
     def get_type(self):
         return "mpc"
 
-    def get_status(self, eventtime):
+    def get_status(self, eventtime) -> ControlMPCStatus:
         return {
             "temp_block": self.state_block_temp,
             "temp_sensor": self.state_sensor_temp,

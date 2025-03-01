@@ -3,10 +3,33 @@
 # Copyright (C) 2016-2021  Kevin O'Connor <kevin@koconnor.net>
 #
 # This file may be distributed under the terms of the GNU GPLv3 license.
+from __future__ import annotations
+
 import sys, os, glob, re, time, logging, configparser, io
 import pathlib
 from .extras.danger_options import get_danger_options
 from . import mathutil
+
+import typing
+
+
+class BaseConfigWarning(typing.TypedDict):
+    type: str
+    message: str
+
+
+class ConfigWarning(BaseConfigWarning, total=False):
+    section: str
+    option: str
+    value: str
+
+
+class ConfigFileStatus(typing.TypedDict):
+    config: dict[str, dict[str, str]]
+    settings: dict[str, dict[str, typing.Any]]
+    warnings: list[ConfigWarning]
+    save_config_pending: bool
+    save_config_pending_items: dict[str, dict[str, str]]
 
 
 error = configparser.Error
@@ -609,7 +632,7 @@ class PrinterConfig:
             msg = f"Section '{section}' is invalid"
             self.warn(_type, msg, section)
 
-    def get_status(self, eventtime):
+    def get_status(self, eventtime) -> ConfigFileStatus:
         return {
             "config": self.status_raw_config,
             "settings": self.status_settings,

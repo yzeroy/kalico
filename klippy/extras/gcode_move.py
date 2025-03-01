@@ -4,6 +4,18 @@
 #
 # This file may be distributed under the terms of the GNU GPLv3 license.
 import logging
+import typing
+
+
+class Status(typing.TypedDict):
+    speed_factor: float
+    speed: float
+    extrude_factor: float
+    absolute_coordinates: bool
+    absolute_extrude: bool
+    homing_origin: tuple[float, float, float, float]
+    position: tuple[float, float, float, float]
+    gcode_position: tuple[float, float, float, float]
 
 
 class GCodeMove:
@@ -130,7 +142,7 @@ class GCodeMove:
     def _get_gcode_speed_override(self):
         return self.speed_factor * 60.0
 
-    def get_status(self, eventtime=None):
+    def get_status(self, eventtime=None) -> Status:
         move_position = self._get_gcode_position()
         return {
             "speed_factor": self._get_gcode_speed_override(),
