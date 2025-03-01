@@ -1,12 +1,15 @@
+## Kalico Python Macro type stubs
+##
+## This should effectively mirror the gcode_macro context
+## for Python macros
+##
+## Double-# comments will be removed during user type-stub generation
+
 import collections.abc
 import math
 import typing
 
-rawparams: str
-params: dict[str, str]
-own_vars: dict[str, typing.Any]
-
-printer: dict[str, dict[str, typing.Any]]
+PrinterStatus = typing.Dict[str, typing.Dict[str, typing.Any]]
 
 def emit(gcode: str) -> None:
     "Run a G-Code"
@@ -53,7 +56,10 @@ respond_info = action_respond_info
 raise_error = action_raise_error
 call_remote_method = action_call_remote_method
 
-TYPE_CHECKING: False
+rawparams: str
+params: dict[str, str]
+own_vars: dict[str, typing.Any]
+printer: PrinterStatus
 
 __all__ = (
     "params",

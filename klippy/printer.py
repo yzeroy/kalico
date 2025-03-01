@@ -509,6 +509,11 @@ def main():
         action="store_true",
         help="perform an import module test",
     )
+    opts.add_option(
+        "--macro-type-stubs",
+        dest="write_type_stubs",
+        help="Write out python macro type stubs",
+    )
     options, args = opts.parse_args()
     if options.import_test:
         import_test()
@@ -574,6 +579,15 @@ def main():
         )
 
     compat.install()
+
+    if options.write_type_stubs:
+        from .kalico import stubgen
+
+        main_reactor = reactor.Reactor()
+        printer = Printer(main_reactor, bglogger, start_args)
+        printer._read_config()
+        stubgen.write_types(printer, stub_filename=options.write_type_stubs)
+        sys.exit(0)
 
     gc.disable()
 
