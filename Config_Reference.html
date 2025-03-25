@@ -579,6 +579,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#linear-delta-kinematics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linear Delta Kinematics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#deltesian-kinematics" class="md-nav__link">
     <span class="md-ellipsis">
       Deltesian Kinematics
@@ -3780,6 +3789,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#linear-delta-kinematics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linear Delta Kinematics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#deltesian-kinematics" class="md-nav__link">
     <span class="md-ellipsis">
       Deltesian Kinematics
@@ -5803,6 +5821,14 @@ diagonals. If the slicer emit <code>M204 S3000</code> (3000 mm/s^2 accel). On th
 143° diagonals, the toolhead will accelerate at 3000 mm/s^2. On the X axis, the
 acceleration will be  12000 * 3000 / 15000 = 2400 mm/s^2, and 18000 mm/s^2 for
 pure Y moves.</p>
+<h3 id="linear-delta-kinematics">Linear Delta Kinematics<a class="headerlink" href="#linear-delta-kinematics" title="Permanent link">&para;</a></h3>
+<p>See <a href="https://github.com/KalicoCrew/kalico//blob/main/config/example-delta.cfg">example-delta.cfg</a> for an example
+linear delta kinematics config file. See the
+<a href="Delta_Calibrate.html">delta calibrate guide</a> for information on
+calibration.</p>
+<p>Only parameters specific to linear delta printers are described here -
+see <a href="#common-kinematic-settings">common kinematic settings</a> for
+available parameters.</p>
 <div class="highlight"><pre><span></span><code>[printer]
 kinematics: delta
 max_z_velocity:
