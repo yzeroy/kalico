@@ -711,12 +711,18 @@ class DockableProbe:
                 "_move_avoiding_dock : Unable to determine exit point"
             )
         d = hypot(dx, dy)
-        # Ensure exit point is outside dock area.
-        magnitude = self.safe_dock_distance + 10e-8
-        x1 = cx + magnitude * dx / d
-        y1 = cy + magnitude * dy / d
-        x2 = cx - magnitude * dx / d
-        y2 = cy - magnitude * dy / d
+        if d == 0:
+            x1 = cx
+            y1 = cy
+            x2 = cx
+            y2 = cy
+        else:
+            # Ensure exit point is outside dock area.
+            magnitude = self.safe_dock_distance + 10e-8
+            x1 = cx + magnitude * dx / d
+            y1 = cy + magnitude * dy / d
+            x2 = cx - magnitude * dx / d
+            y2 = cy - magnitude * dy / d
 
         return self._get_closest_point(reference_point, [(x1, y1), (x2, y2)])
 
