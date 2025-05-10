@@ -153,18 +153,22 @@ config WANT_HD44780
 config WANT_ADXL345
     bool
     depends on WANT_SPI
+    select NEED_SENSOR_BULK
     default y
 config WANT_LIS2DW
     bool
     depends on WANT_SPI || WANT_I2C
+    select NEED_SENSOR_BULK
     default y
 config WANT_MPU9250
     bool
     depends on WANT_I2C
+    select NEED_SENSOR_BULK
     default y
 config WANT_ICM20948
     bool
     depends on WANT_I2C
+    select NEED_SENSOR_BULK
     default y
 config WANT_THERMOCOUPLE
     bool
@@ -173,18 +177,22 @@ config WANT_THERMOCOUPLE
 config WANT_HX71X
     bool
     depends on WANT_GPIO_BITBANGING
+    select NEED_SENSOR_BULK
     default y
 config WANT_ADS1220
     bool
     depends on WANT_SPI
+    select NEED_SENSOR_BULK
     default y
 config WANT_LDC1612
     bool
     depends on WANT_I2C
+    select NEED_SENSOR_BULK
     default y
 config WANT_SENSOR_ANGLE
     bool
     depends on HAVE_SPI
+    select NEED_SENSOR_BULK
     default y
 config WANT_GPIO_SPI
     bool
@@ -200,9 +208,7 @@ config WANT_GPIO_I2C
     default y
 config NEED_SENSOR_BULK
     bool
-    depends on WANT_ADXL345 || WANT_LIS2DW || WANT_MPU9250 || WANT_ICM20948 \
-        || WANT_HX71X || WANT_ADS1220 || WANT_LDC1612 || WANT_SENSOR_ANGLE
-    default y
+    default n
 config WANT_OPTIMIZE_SIZE
     bool
     default n
