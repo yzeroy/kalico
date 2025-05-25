@@ -193,33 +193,50 @@ class ZTilt:
         self.printer = config.get_printer()
         self.section = config.get_name()
 
-        self.z_positions = config.getlists(
-            "z_positions", seps=(",", "\n"), parser=float, count=2
-        )
-        z_count = len(self.z_positions)
+        has_points = config.get("z_positions", None) is not None or config.get("points", None) is not None
+        has_extra_points = config.get("extra_points", None) is not None
 
-        self.retry_helper = RetryHelper(config)
-        self.probe_helper = probe.ProbePointsHelper(config, self.probe_finalize)
-        self.probe_helper.minimum_points(2)
+        if not has_points and not has_extra_points:
+            raise self.printer.config_error("z_tilt_ng: one of z_positions/points or extra_points must be provided")
 
-        self.z_offsets = config.getlists(
-            "z_offsets", parser=float, count=z_count, default=None
-        )
-
-        self.z_status = ZAdjustStatus(self.printer)
-        self.z_helper = ZAdjustHelper(config, z_count)
         # probe points for calibrate/autodetect
-        cal_probe_points = list(self.probe_helper.get_probe_points())
+        cal_probe_points = []
+        self.retry_helper = RetryHelper(config)
+        self.z_status = ZAdjustStatus(self.printer)
+        self.speed = config.getfloat("speed", 5.0, above=0.0)
+        self.lift_speed = config.getfloat("lift_speed", self.speed, above=0.0)
+
+        if has_points:
+            self.z_positions = config.getlists(
+                "z_positions", seps=(",", "\n"), parser=float, count=2
+            )
+            z_count = len(self.z_positions)
+            self.probe_helper = probe.ProbePointsHelper(config, self.probe_finalize)
+            self.probe_helper.minimum_points(2)
+            cal_probe_points.extend(self.probe_helper.get_probe_points())
+
+            self.z_offsets = config.getlists(
+                "z_offsets", parser=float, count=z_count, default=None
+            )
+        else:
+            z_count = None
+
+        self.z_helper = ZAdjustHelper(config, z_count)
         self.num_probe_points = len(cal_probe_points)
         self.cal_helper = None
-        if config.get("extra_points", None) is not None:
-            self.cal_helper = probe.ProbePointsHelper(
-                config, self.cal_finalize, option_name="extra_points"
-            )
-            cal_probe_points.extend(self.cal_helper.get_probe_points())
-            self.cal_helper.update_probe_points(cal_probe_points, 3)
-        self.ad_helper = probe.ProbePointsHelper(config, self.ad_finalize)
-        self.ad_helper.update_probe_points(cal_probe_points, 3)
+
+        if has_extra_points and not has_points:
+            self.ad_helper = probe.ProbePointsHelper(config, self.ad_finalize, option_name="extra_points")
+        else:
+            if has_extra_points:
+                self.cal_helper = probe.ProbePointsHelper(
+                    config, self.cal_finalize, option_name="extra_points"
+                )
+                cal_probe_points.extend(self.cal_helper.get_probe_points())
+                self.cal_helper.update_probe_points(cal_probe_points, 3)
+            self.ad_helper = probe.ProbePointsHelper(config, self.ad_finalize)
+            self.ad_helper.update_probe_points(cal_probe_points, 3)
+
         self.cal_conf_avg_len = config.getint("averaging_len", 3, minval=1)
         self.ad_conf_delta = config.getfloat(
             "autodetect_delta", 1.0, minval=0.1
@@ -227,11 +244,12 @@ class ZTilt:
 
         # Register Z_TILT_ADJUST command
         gcode = self.printer.lookup_object("gcode")
-        gcode.register_command(
-            "Z_TILT_ADJUST",
-            self.cmd_Z_TILT_ADJUST,
-            desc=self.cmd_Z_TILT_ADJUST_help,
-        )
+        if has_points:
+            gcode.register_command(
+                "Z_TILT_ADJUST",
+                self.cmd_Z_TILT_ADJUST,
+                desc=self.cmd_Z_TILT_ADJUST_help,
+            )
         if self.cal_helper is not None:
             gcode.register_command(
                 "Z_TILT_CALIBRATE",
@@ -292,7 +310,7 @@ class ZTilt:
 
     def apply_adjustments(self, offsets, new_params):
         z_offset = offsets[2]
-        speed = self.probe_helper.get_lift_speed()
+        speed = self.lift_speed
         x_adjust = float(new_params["x_adjust"])
         y_adjust = float(new_params["y_adjust"])
         z_adjust = float(
@@ -384,7 +402,7 @@ class ZTilt:
     def ad_finalize(self, offsets, positions):
         avlen = self.cal_avg_len
         delta = self.ad_delta
-        speed = self.probe_helper.get_lift_speed()
+        speed = self.lift_speed
         new_params = self.perform_coordinate_descent(offsets, positions)
         if self.ad_phase in range(1, 4):
             new_params["z_adjust"] -= delta / 2
