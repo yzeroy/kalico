@@ -242,7 +242,7 @@ class PrinterProbe:
                 retries += 1
                 positions = []
             # Retract
-            if len(positions) < sample_count:
+            if True or len(positions) < sample_count:
                 self._move(probexy + [pos[2] + sample_retract_dist], lift_speed)
         if must_notify_multi_probe:
             self.multi_probe_end()
