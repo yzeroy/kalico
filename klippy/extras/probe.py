@@ -16,7 +16,7 @@ can travel further (the Z minimum position can be negative).
 
 
 class PrinterProbe:
-    def __init__(self, config, mcu_probe):
+    def __init__(self, config, mcu_probe, is_child_probe=False):
         self.printer = config.get_printer()
         self.name = config.get_name()
         self.mcu_probe = mcu_probe
@@ -57,6 +57,12 @@ class PrinterProbe:
         self.samples_retries = config.getint(
             "samples_tolerance_retries", 0, minval=0
         )
+
+        self.gcode = self.printer.lookup_object("gcode")
+
+        if is_child_probe:
+            return
+
         # Register z_virtual_endstop pin
         self.printer.lookup_object("pins").register_chip("probe", self)
         # Register homing event handlers
@@ -76,7 +82,6 @@ class PrinterProbe:
             "gcode:command_error", self._handle_command_error
         )
         # Register PROBE/QUERY_PROBE commands
-        self.gcode = self.printer.lookup_object("gcode")
         self.gcode.register_command(
             "PROBE", self.cmd_PROBE, desc=self.cmd_PROBE_help
         )
