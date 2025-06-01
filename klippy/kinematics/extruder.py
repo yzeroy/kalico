@@ -32,8 +32,20 @@ class ExtruderStepper:
         self.printer.register_event_handler(
             "klippy:connect", self._handle_connect
         )
-        gcode = self.printer.lookup_object("gcode")
         if self.name == "extruder":
+            other_name = "extruder0"
+        elif self.name == "extruder0":
+            other_name = "extruder"
+        else:
+            other_name = None
+
+        if other_name is not None:
+            if self.printer.lookup_object(other_name, None) is not None:
+                raise self.printer.config_error(f"Can't define both {self.name} and {other_name}")
+            self.printer.add_object(other_name, self)
+
+        gcode = self.printer.lookup_object("gcode")
+        if other_name is not None:
             gcode.register_mux_command(
                 "SET_PRESSURE_ADVANCE",
                 "EXTRUDER",
