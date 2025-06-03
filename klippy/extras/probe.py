@@ -534,7 +534,7 @@ class ProbePointsHelper:
     def use_xy_offsets(self, use_offsets):
         self.use_offsets = use_offsets
 
-    def get_lift_speed(self):
+    def get_lift_speed(self, gcmd=None):
         return self.lift_speed
 
     def _lift_toolhead(self):
