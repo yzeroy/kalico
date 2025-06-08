@@ -166,6 +166,12 @@ class PrinterProbe:
             epos = self.mcu_probe.probing_move(pos, speed)
         except self.printer.command_error as e:
             reason = str(e)
+            if "Probe triggered prior to movement" in reason:
+                self.gcode.respond_info(
+                    "probe at %.3f,%.3f failed (triggered early)" % (pos[0], pos[1])
+                )
+                return [pos[0], pos[1], math.inf]
+
             if "Timeout during endstop homing" in reason:
                 reason += HINT_TIMEOUT
             raise self.printer.command_error(reason)
@@ -224,7 +230,8 @@ class PrinterProbe:
         must_notify_multi_probe = not self.multi_probe_pending
         if must_notify_multi_probe:
             self.multi_probe_begin(always_restore_toolhead=True)
-        probexy = self.printer.lookup_object("toolhead").get_position()[:2]
+        toolhead = self.printer.lookup_object("toolhead")
+        probexy = toolhead.get_position()[:2]
         retries = 0
         positions = []
 
@@ -232,6 +239,13 @@ class PrinterProbe:
         while len(positions) < sample_count:
             # Probe position
             pos = self._probe(speed)
+            if pos[2] == math.inf:
+                gcmd.respond_info("Probe failure. Retrying...")
+                pos[2] = toolhead.get_position()[2]
+                retries += 1
+                positions = []
+                self._move(probexy + [pos[2] + sample_retract_dist], lift_speed)
+                continue
             if self._drop_first_result and first_probe:
                 first_probe = False
                 liftpos = [None, None, pos[2] + sample_retract_dist]
